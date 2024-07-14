@@ -31,7 +31,8 @@ const CreateForm = ({ type, post }) => {
     <label htmlFor="title">Recipe Title</label><br />
     <input 
         type="text" 
-        name="title" 
+        name="title"
+        id="title" 
         value={FormData.title} 
         onChange={handleChange} 
         required 
@@ -42,6 +43,7 @@ const CreateForm = ({ type, post }) => {
     <input 
         type="text" 
         name="description" 
+        id="description" 
         value={FormData.description} 
         onChange={handleChange} 
         required 
@@ -52,6 +54,7 @@ const CreateForm = ({ type, post }) => {
     <input 
         type="text" 
         name="ingredients" 
+        id="ingredients" 
         value={FormData.ingredients} 
         onChange={handleChange} 
         required 
@@ -62,6 +65,7 @@ const CreateForm = ({ type, post }) => {
     <input 
         type="text" 
         name="instructions" 
+        id="instructions" 
         value={FormData.instructions} 
         onChange={handleChange} 
         required 
@@ -72,6 +76,7 @@ const CreateForm = ({ type, post }) => {
     <input 
         type="number" 
         name="servings" 
+        id="servings" 
         value={FormData.servings} 
         onChange={handleChange} 
         required 
@@ -82,6 +87,7 @@ const CreateForm = ({ type, post }) => {
     <input 
         type="file" 
         name="image" 
+        id="image" 
         onChange={handleChange} 
     /><br />
 
