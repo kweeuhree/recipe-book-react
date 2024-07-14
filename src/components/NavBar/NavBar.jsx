@@ -3,18 +3,23 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 
-  const links = ['home', 'all', 'favorites'];
+    const links = [
+        ['home'],
+        ['all', 'all recipes'],
+        ['favorites', 'favorite recipes']
+    ];
+
+    const linksJSX =  links.map((link) => (
+        <li key={link[0]}>
+            {/* display a proper link name */}
+            <Link to={`/${link[0]}`}>{link[1]}</Link>
+        </li>
+    ));
 
   return (
     <nav>
         <ul>
-            {
-                links.map((link) => (
-                    <li key={link}>
-                        <Link to={`/${link}`}>{link}</Link>
-                    </li>
-                ))
-            }
+            {linksJSX}
         </ul>
     </nav>
   )

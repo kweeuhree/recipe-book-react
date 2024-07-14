@@ -7,8 +7,7 @@ import { fetchRecipes, unlikeFavoriteRecipe, likeARecipe } from './utils/fetchRe
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 // import pages
-import AllRecipesPage from './pages/AllRecipesPage/AllrecipesPage';
-import FavoriteRecipesPage from './pages/FavoriteRecipesPage/FavoriteRecipesPage';
+import RecipesPage from './pages/RecipesPage/RecipesPage';
 import HomePage from './pages/HomePage/HomePage';
 import SpecificRecipePage from './pages/SpecificRecipePage/SpecificRecipePage';
 
@@ -37,6 +36,13 @@ function App() {
     ))
 
     setFavoriteRecipes(likedRecipes);
+  }
+  
+
+  // handle updating current recipe
+  const handleCurrentRecipe = (recipe) => {
+    setCurrentRecipe(recipe);
+    return <Navigate to={`/recipes/${recipe.id}/`} />;
   }
 
   // handle adding or removing from favorite recipes
@@ -67,38 +73,39 @@ function App() {
     {/* routes */}
       <Routes>
         {/* navigate to home */}
-        <Route path="/" element={<Navigate to="/home" />} /> 
+        <Route path="/" element={<Navigate to="/home/" />} /> 
 
         {/* home page */}
-        <Route path="/home" element={
+        <Route path="/home/" element={
           <HomePage 
             latestRecipe={latestRecipe} 
             favoriteRecipes={favoriteRecipes} 
             handleFavorites={handleFavorites} 
+            handleCurrentRecipe={handleCurrentRecipe}
             currentRecipe={currentRecipe}/>
         } />
 
         {/* all recipes */}
-        <Route path="/all" element={
-          <AllRecipesPage 
+        <Route path="/all/" element={
+          <RecipesPage 
             recipes={allRecipes} 
             handleFavorites={handleFavorites} 
             currentRecipe={currentRecipe}/>
         } />
 
         {/* specific recipe */}
-        <Route path={`/recipe/:id`} element={
+        <Route path={`/recipe/:id/`} element={
           <SpecificRecipePage 
             handleFavorites={handleFavorites} 
             currentRecipe={currentRecipe} />
         } />
 
         {/* favorite recipes */}
-        <Route path="/favorites" element={
-          <FavoriteRecipesPage 
+        <Route path="/favorites/" element={
+          <RecipesPage 
             recipes={favoriteRecipes} 
             handleFavorites={handleFavorites} 
-            currentRecipe={currentRecipe} />
+            handleCurrentRecipe={handleCurrentRecipe} />
         } />
 
       </Routes>
