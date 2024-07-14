@@ -7,7 +7,7 @@ const Footer = () => {
     const author = 'Veronika Kolesnikova';
 
   return (
-    <div>&copy; {year}, {author}</div>
+    <footer>&copy; {year}, {author}</footer>
   )
 }
 
