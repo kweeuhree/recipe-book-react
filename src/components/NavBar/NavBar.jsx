@@ -6,13 +6,14 @@ const NavBar = () => {
     const links = [
         ['home'],
         ['all', 'all recipes'],
-        ['favorites', 'favorite recipes']
+        ['favorites', 'favorite recipes'],
+        ['add', 'add new plant']
     ];
 
     const linksJSX =  links.map((link) => (
         <li key={link[0]}>
             {/* display a proper link name */}
-            <Link to={`/${link[0]}`}>{link[1]}</Link>
+            <Link to={`/${link[0]}/`}>{link[1]}</Link>
         </li>
     ));
 
