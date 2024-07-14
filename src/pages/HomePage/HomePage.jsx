@@ -1,5 +1,4 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
 import Recipe from '../../components/Recipe/Recipe';
 
 const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, currentRecipe }) => {
@@ -9,12 +8,18 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
     <main>
       {/* latest recipe */}
       <div className='latestRecipe' onClick={() => handleCurrentRecipe(latestRecipe)}>
-        {latestRecipe}
+           { latestRecipe && 
+            <Recipe 
+              key={'latestRecipe' + latestRecipe.id} 
+              recipe={latestRecipe}
+              handleFavorites={handleFavorites}
+              handleCurrentRecipe={handleCurrentRecipe}
+             /> }
       </div>
 
       {/* favorite recipes */}
       <div className='favorite-carousel'>
-        { favoriteRecipes.length < 0  ?
+        { favoriteRecipes.length > 0  ?
           favoriteRecipes.map((recipe) => (
             <Recipe 
               key={recipe.id} 
