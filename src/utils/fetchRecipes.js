@@ -5,7 +5,7 @@ export const fetchRecipes = async () => {
     })
 
     const recipeData = await response.json();
-    console.log('received recipe data inside fetchRecipes', recipeData);
+    // console.log('received recipe data inside fetchRecipes', recipeData);
     
     return recipeData;
 

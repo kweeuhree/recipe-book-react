@@ -7,14 +7,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  const recipesJSX = recipes.map((recipe) => {
-    console.log(recipe)
-    return (<Recipe 
-          key={recipe.id} 
-          handleFavorites={handleFavorites} 
-          handleCurrentRecipe={handleCurrentRecipe}
-        />)
-});
+  // const recipesJSX = 
 
   const handleClick = () => {
     return (
@@ -36,7 +29,20 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
       </div>
 
       {/* recipes */}
-      <div>{ recipes.length > 0 ? recipesJSX : 'No recipes yet'}</div>
+      <div>
+        { recipes.length > 0 ? (
+          recipes.map((recipe) => (
+            <Recipe 
+              key={recipe.id} 
+              recipe={recipe}
+              handleFavorites={handleFavorites} 
+              handleCurrentRecipe={handleCurrentRecipe}
+            />
+          ))
+        ) : (
+          <p>No recipes yet</p>
+        )}
+      </div>
     </>
   )
 }

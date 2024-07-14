@@ -11,7 +11,7 @@ import RecipesPage from './pages/RecipesPage/RecipesPage';
 import HomePage from './pages/HomePage/HomePage';
 import SpecificRecipePage from './pages/SpecificRecipePage/SpecificRecipePage';
 import AddNewRecipePage from './pages/AddNewRecipePage/AddNewRecipePage';
-
+//import styles
 import './App.css'
 
 function App() {
@@ -74,7 +74,6 @@ function App() {
     // console.log(latestRecipe, "latest recipe");
   }
 
-
   return (
     <>
     {/* navigation bar */}
@@ -98,7 +97,7 @@ function App() {
         {/* all recipes */}
         <Route path="/all/" element={
           <RecipesPage 
-            recipes={allRecipes} 
+            recipes={allRecipes[0]} 
             handleFavorites={handleFavorites} 
             currentRecipe={currentRecipe}/>
         } />
