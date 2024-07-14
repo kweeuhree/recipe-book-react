@@ -10,8 +10,8 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
       <div className='latestRecipe' onClick={() => handleCurrentRecipe(latestRecipe)}>
            { latestRecipe && 
             <Recipe 
-              key={'latestRecipe' + latestRecipe.id} 
-              recipe={latestRecipe}
+              key={'latestRecipe' + latestRecipe.newRecipe.id} 
+              recipe={latestRecipe.newRecipe}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe}
              /> }
