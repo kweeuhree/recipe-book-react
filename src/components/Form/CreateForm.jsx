@@ -40,7 +40,7 @@ const CreateForm = ({ type, post }) => {
     /><br />
 
     <label htmlFor="description">Description</label><br />
-    <input 
+    <textarea 
         type="text" 
         name="description" 
         id="description" 
@@ -51,7 +51,7 @@ const CreateForm = ({ type, post }) => {
     /><br />
 
     <label htmlFor="ingredients">Ingredients</label><br />
-    <input 
+    <textarea 
         type="text" 
         name="ingredients" 
         id="ingredients" 
@@ -62,7 +62,7 @@ const CreateForm = ({ type, post }) => {
     /><br />
 
     <label htmlFor="instructions">Instructions</label><br />
-    <input 
+    <textarea 
         type="text" 
         name="instructions" 
         id="instructions" 

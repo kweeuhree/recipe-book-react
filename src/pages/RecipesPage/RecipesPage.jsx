@@ -7,13 +7,14 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  const recipesJSX = recipes.map((recipe) => (
-        <Recipe 
+  const recipesJSX = recipes.map((recipe) => {
+    console.log(recipe)
+    return (<Recipe 
           key={recipe.id} 
           handleFavorites={handleFavorites} 
           handleCurrentRecipe={handleCurrentRecipe}
-        />
-  ));
+        />)
+});
 
   const handleClick = () => {
     return (
