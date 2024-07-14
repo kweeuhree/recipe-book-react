@@ -35,7 +35,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
       </div>
 
       {/* recipes */}
-      <div>{ recipes.length < 0 ? recipesJSX : 'No recipes yet'}</div>
+      <div>{ recipes.length > 0 ? recipesJSX : 'No recipes yet'}</div>
     </>
   )
 }
