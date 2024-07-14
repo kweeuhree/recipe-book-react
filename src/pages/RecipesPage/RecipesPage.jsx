@@ -1,18 +1,16 @@
 import React from 'react'
-import { Navigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Recipe from '../../components/Recipe/Recipe';
 
 const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
-
+  const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
 
   // const recipesJSX = 
 
   const handleClick = () => {
-    return (
-      <Navigate to={pathname === '/all/' ? '/favorites/' : `/all/`} />
-    );
+    return pathname === '/all/' ? navigate('/favorites/') : navigate(`/all/`); 
   }
 
   return (
@@ -23,7 +21,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
 
         <p 
           onClick={handleClick}>
-            {pathname === '/all/' ? 'All Recipes' : 'Favorite Recipes'}
+            {pathname === '/all/' ? 'Favorite Recipes' : 'All Recipes'}
         </p>
 
       </div>
