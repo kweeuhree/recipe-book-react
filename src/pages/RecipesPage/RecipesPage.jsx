@@ -15,6 +15,12 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
         />
   ));
 
+  const handleClick = () => {
+    return (
+      <Navigate to={pathname === '/all/' ? '/favorites/' : `/all/`} />
+    );
+  }
+
   return (
     <>
     {/* top section */}
@@ -22,7 +28,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
         <h2>recipe book</h2>
 
         <p 
-          onClick={<Navigate to={pathname === '/all/' ? '/favorites/' : `/all/`} />}>
+          onClick={handleClick}>
             {pathname === '/all/' ? 'All Recipes' : 'Favorite Recipes'}
         </p>
 
