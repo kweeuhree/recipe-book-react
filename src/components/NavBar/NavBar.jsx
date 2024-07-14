@@ -7,7 +7,7 @@ const NavBar = () => {
         ['home'],
         ['all', 'all recipes'],
         ['favorites', 'favorite recipes'],
-        ['add', 'add new plant']
+        ['add', 'add new recipe']
     ];
 
     const linksJSX =  links.map((link) => (
