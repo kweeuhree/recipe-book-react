@@ -21,19 +21,20 @@ function App() {
   const [ latestRecipe, setLatestRecipe ] = useState(null);
 
   useEffect(()=> {
-      const fetchAllRecipes = async() => {
+      const fetchAllRecipes = async () => {
         const recipesData = await fetchRecipes();
+        
         setAllRecipes((prev) => ([...prev, recipesData]));
-        setLatestRecipe(recipesData[0]);
+        handleLatestRecipe(recipesData);
         updateFavoriteRecipes(recipesData);
       }
-
+      
       fetchAllRecipes();
   }, [])
 
   const updateFavoriteRecipes = (recipesData) => {
     const likedRecipes = recipesData.filter((recipe) => (
-      recipe.isLiked !== false
+      recipe.isLiked === true
     ))
 
     setFavoriteRecipes(likedRecipes);
@@ -65,8 +66,12 @@ function App() {
 
   }
 
-  const handleLatestRecipe = (newRecipe) => {
-    setLatestRecipe(newRecipe);
+  const handleLatestRecipe = (recipeObject) => {
+    // console.log(recipeObject[0], 'recipe object 0');
+    const newRecipe = recipeObject[0];
+    // console.log(newRecipe, 'new recipe');
+    setLatestRecipe((prev) => ({...prev, newRecipe}));
+    // console.log(latestRecipe, "latest recipe");
   }
 
 
