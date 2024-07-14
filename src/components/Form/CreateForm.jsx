@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const CreateForm = ({ type, post }) => {
-    const [ FormData, setFormData ] = useState({
+    const [ CreateFormData, setCreateFormData ] = useState({
         title: '',
         description: '',
         ingredients: '',
@@ -19,8 +19,8 @@ const CreateForm = ({ type, post }) => {
         // destructure event object
         const { target: {name, value} } = event;
 
-        setFormData((prevFormData) => ({
-            ...prevFormData,
+        setCreateFormData((prevCreateFormData) => ({
+            ...prevCreateFormData,
             [name]: value
         }))
     }
@@ -33,7 +33,7 @@ const CreateForm = ({ type, post }) => {
         type="text" 
         name="title"
         id="title" 
-        value={FormData.title} 
+        value={CreateFormData.title} 
         onChange={handleChange} 
         required 
         placeholder="Enter the recipe title"
@@ -44,7 +44,7 @@ const CreateForm = ({ type, post }) => {
         type="text" 
         name="description" 
         id="description" 
-        value={FormData.description} 
+        value={CreateFormData.description} 
         onChange={handleChange} 
         required 
         placeholder="Brief description of the recipe"
@@ -55,7 +55,7 @@ const CreateForm = ({ type, post }) => {
         type="text" 
         name="ingredients" 
         id="ingredients" 
-        value={FormData.ingredients} 
+        value={CreateFormData.ingredients} 
         onChange={handleChange} 
         required 
         placeholder="List of ingredients"
@@ -66,7 +66,7 @@ const CreateForm = ({ type, post }) => {
         type="text" 
         name="instructions" 
         id="instructions" 
-        value={FormData.instructions} 
+        value={CreateFormData.instructions} 
         onChange={handleChange} 
         required 
         placeholder="Step-by-step instructions"
@@ -77,7 +77,7 @@ const CreateForm = ({ type, post }) => {
         type="number" 
         name="servings" 
         id="servings" 
-        value={FormData.servings} 
+        value={CreateFormData.servings} 
         onChange={handleChange} 
         required 
         placeholder="Number of servings"
