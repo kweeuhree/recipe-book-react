@@ -8,6 +8,7 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
     <main>
       {/* latest recipe */}
       <div className='latestRecipe' onClick={() => handleCurrentRecipe(latestRecipe)}>
+        <p>Latest Recipe:</p>
            { latestRecipe && 
             <Recipe 
               key={'latestRecipe' + latestRecipe.newRecipe.id} 

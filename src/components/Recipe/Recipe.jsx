@@ -39,9 +39,15 @@ const Recipe = ({ recipe, handleFavorites, handleCurrentRecipe }) => {
   }
 
   return (
-    <div className='recipe' onClick={handleCurrentRecipe}>
-        { pathname === '/recipe/:id' ? recipeFull() : recipePreview() }
-    </div>
+    <>
+      {!recipe ? (          
+          <p>Good things to come soon</p>
+          ):(
+          <div className='recipe' onClick={handleCurrentRecipe}>
+            { pathname === '/recipe/:id' ? recipeFull() : recipePreview() }
+          </div>
+    )}
+    </>
   )
 }
 
