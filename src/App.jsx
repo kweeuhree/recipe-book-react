@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 import RecipesPage from './pages/RecipesPage/RecipesPage';
 import HomePage from './pages/HomePage/HomePage';
 import SpecificRecipePage from './pages/SpecificRecipePage/SpecificRecipePage';
+import AddNewRecipePage from './pages/AddNewRecipePage/AddNewRecipePage';
 
 import './App.css'
 
@@ -64,6 +65,10 @@ function App() {
 
   }
 
+  const handleLatestRecipe = (newRecipe) => {
+    setLatestRecipe(newRecipe);
+  }
+
 
   return (
     <>
@@ -106,6 +111,13 @@ function App() {
             recipes={favoriteRecipes} 
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe} />
+        } />
+
+        {/* add new recipe */}
+        <Route path="/add/" element={
+          <AddNewRecipePage
+            handleCurrentRecipe={handleCurrentRecipe}
+            handleLatestRecipe={handleLatestRecipe} />
         } />
 
       </Routes>
