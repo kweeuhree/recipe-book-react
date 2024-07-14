@@ -13,7 +13,7 @@ const NavBar = () => {
     const linksJSX =  links.map((link) => (
         <li key={link[0]}>
             {/* display a proper link name */}
-            <Link to={`/${link[0]}/`}>{link[1]}</Link>
+            <Link to={`/${link[0]}/`}>{link[1] ? link[1] : link[0]}</Link>
         </li>
     ));
 
