@@ -1,5 +1,8 @@
 import React from 'react';
+// import link for navigation
 import { Link } from 'react-router-dom';
+// import styles
+import './NavBarStyle.css';
 
 const NavBar = () => {
 
@@ -7,7 +10,7 @@ const NavBar = () => {
         ['home'],
         ['all', 'all recipes'],
         ['favorites', 'favorite recipes'],
-        ['add', 'add new recipe']
+        ['add', 'add new']
     ];
 
     const linksJSX =  links.map((link) => (
