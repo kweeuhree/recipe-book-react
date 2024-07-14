@@ -12,12 +12,10 @@ ul {
 
 ul > li {
     border: 1px solid white;
-    color: white;
     background-color: rgba(240, 249, 255, 0.05);
     list-style-type: none;
     align-content: center;
     width: 25%;
     height: 100%; 
-
 }
 
