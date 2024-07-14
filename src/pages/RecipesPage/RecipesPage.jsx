@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom';
 import Recipe from '../../components/Recipe/Recipe';
-import AllRecipesPage from '../AllRecipesPage/AllRecipesPage';
 
 const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
 
@@ -26,7 +25,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
           onClick={<Navigate to={pathname === '/all/' ? '/favorites/' : `/all/`} />}>
             {pathname === '/all/' ? 'All Recipes' : 'Favorite Recipes'}
         </p>
-        
+
       </div>
 
       {/* recipes */}
