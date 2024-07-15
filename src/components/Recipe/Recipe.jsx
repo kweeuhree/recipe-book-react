@@ -9,7 +9,6 @@ import './RecipeStyle.css';
 const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
   const isRecipeLiked = favoriteRecipes?.filter(favRecipe => favRecipe.id !== recipe.id);
-  console.log(favoriteRecipes, 'favs in Recipe')
 
   const handleClick = (event) => {
     event.stopPropagation();
