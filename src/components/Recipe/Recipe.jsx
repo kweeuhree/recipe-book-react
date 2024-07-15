@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 // import components
 import ImageContainer from '../ImageContainer/ImageContainer';
 // import styles
@@ -8,10 +7,6 @@ import './RecipeStyle.css';
 const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type }) => {
 
   console.log(recipe, 'recipe in Recipe');
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  // const isRecipeDetail = /^\/recipes\/\d+\/?$/.test(pathname);
 
   const recipePreview = () => {
     return (
