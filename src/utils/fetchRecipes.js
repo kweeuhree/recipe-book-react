@@ -35,6 +35,7 @@ export const unlikeFavoriteRecipe = async (recipeId) => {
   };
 
 export const likeARecipe = async (recipeId) => {
+  console.log(recipeId)
     try {
       const response = await fetch(`/api/recipes/${recipeId}/like/`, {
         method: 'POST',

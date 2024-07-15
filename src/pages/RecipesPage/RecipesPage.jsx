@@ -7,7 +7,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  console.log(recipes, 'inside recipespage')
+  // console.log(recipes, 'inside recipespage')
 
   const handleClick = () => {
     return pathname === '/all/' ? navigate('/favorites/') : navigate(`/all/`); 
@@ -31,7 +31,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
         { recipes?.length > 0 ? (
           recipes.map((recipe) => (
             <Recipe 
-              key={recipe.id} 
+              key={recipe?.id} 
               type='preview'
               recipe={recipe}
               handleFavorites={handleFavorites}

@@ -4,7 +4,7 @@ import Recipe from '../../components/Recipe/Recipe';
 
 const SpecificRecipePage = ({ handleFavorites, handleCurrentRecipe, currentRecipe }) => {  
 
-  console.log(currentRecipe, 'inside SpecificRecipePage')
+  // console.log(currentRecipe, 'inside SpecificRecipePage')
   return (
     <div>
       <Recipe 

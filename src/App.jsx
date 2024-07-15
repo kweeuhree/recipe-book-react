@@ -62,20 +62,19 @@ function App() {
 
 
   // handle adding or removing from favorite recipes
-  const handleFavorites = async (event) => {
-    event.stopPropagation();
+  const handleFavorites = async (recipe) => {
 
     const found = favoriteRecipes.find(
-      favRecipe => favRecipe.id === currentRecipe.id
+      favRecipe => favRecipe.id === recipe.id
     );
 
     if(found) {
       setFavoriteRecipes((prev) => 
-        (prev.filter((favRecipe) => favRecipe.id !== currentRecipe.id)));
-      await unlikeFavoriteRecipe(currentRecipe.id);
+        (prev.filter((favRecipe) => favRecipe.id !== recipe.id)));
+      await unlikeFavoriteRecipe(recipe.id);
     } else {
-      setFavoriteRecipes((prev) => ([currentRecipe, ...prev]));
-      await likeARecipe(currentRecipe.id);
+      setFavoriteRecipes((prev) => ([recipe, ...prev]));
+      await likeARecipe(recipe.id);
     }
 
   }

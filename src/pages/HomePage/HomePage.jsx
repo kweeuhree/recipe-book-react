@@ -3,7 +3,7 @@ import Recipe from '../../components/Recipe/Recipe';
 
 const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, currentRecipe }) => {
   
-console.log(latestRecipe, 'latest recipe in homepage')
+// console.log(latestRecipe, 'latest recipe in homepage')
   return (
     <main>
       {/* latest recipe */}
@@ -25,7 +25,7 @@ console.log(latestRecipe, 'latest recipe in homepage')
         { favoriteRecipes.length > 0  ?
           favoriteRecipes.map((recipe) => (
             <Recipe 
-              key={recipe.id} 
+              key={recipe?.id} 
               type='preview'
               recipe={recipe}
               handleFavorites={handleFavorites}
