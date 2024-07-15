@@ -22,6 +22,7 @@ function App() {
 
   const navigate = useNavigate();
 
+  // fetch all recipes
   useEffect(()=> {
       const fetchAllRecipes = async () => {
         const recipesData = await fetchRecipes();
@@ -34,24 +35,31 @@ function App() {
       fetchAllRecipes();
   }, [])
 
+  //update each time there is a new recipe added
   useEffect(() => {
     updateAllRecipes();
   }, [latestRecipe]);
 
-  const updateFavoriteRecipes = (recipesData) => {
-    const likedRecipes = recipesData.filter((recipe) => (
-      recipe.isLiked === true
-    ))
-
-    setFavoriteRecipes(likedRecipes);
+ // update all recipes
+  const updateAllRecipes = (recipe) => {
+    recipe &&
+    setAllRecipes((prevAllRecipes) => ([recipe, ...prevAllRecipes]));
   }
-  
 
   // handle updating current recipe
   const handleCurrentRecipe = (recipe) => {
     setCurrentRecipe(recipe);
     navigate(`/recipes/${recipe.id}`);
   }
+
+  // handle liked recipes
+  const updateFavoriteRecipes = (recipesData) => {
+    const likedRecipes = recipesData.filter((recipe) => (
+      recipe.isLiked === true
+    ))
+    setFavoriteRecipes(likedRecipes);
+  }
+
 
   // handle adding or removing from favorite recipes
   const handleFavorites = async (event) => {
@@ -74,17 +82,10 @@ function App() {
 
   // update latest recipe
   const handleLatestRecipe = (recipeObject) => {
-    // console.log(recipeObject)
     setLatestRecipe(recipeObject[0]);
   }
 
-  // update all recipes
-  const updateAllRecipes = (recipe) => {
-    recipe &&
-    setAllRecipes((prevAllRecipes) => ([recipe, ...prevAllRecipes]));
-  }
 
-  console.log(allRecipes, 'all recipes inside app')
 
   return (
     <>
