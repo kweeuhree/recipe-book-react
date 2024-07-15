@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { FaRegWindowClose } from "react-icons/fa";
 import { useParams, useNavigate } from 'react-router-dom';
 import CreateNoteForm from '../../components/Form/CreateNoteForm.jsx';
+import './NotesStyles.css'
 
 const NotesPage = ({ recipes }) => {
 
@@ -48,12 +50,22 @@ const NotesPage = ({ recipes }) => {
     navigate(-1);
   }
 
+  const handleDeleteNote = async (note) => {
+      await fetch(`http://localhost:8000/api/recipes/${recipeId}/notes/${note.id}`, {
+        method: 'DELETE'
+      })
+
+      setCurrentNotes((prevCurrentNotes) => (
+        prevCurrentNotes.filter((n) => n.id !== note.id)
+      ))
+  }
+
   return (
     <>
       <button onClick={handleGoBack}>Back to recipe</button>
       {currentNotes?.length > 0 ? (
           currentNotes.map((note) => (
-            <div key={note.id}>{note.body}</div>
+            <div key={note.id} className='note'><span>{note.body}</span><span onClick={()=> handleDeleteNote(note)}><FaRegWindowClose /></span></div>
           ))
         ) : (
            <p>No notes yet</p>

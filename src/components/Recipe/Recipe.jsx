@@ -2,12 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 // import icons
 import { AiFillLike } from "react-icons/ai";
+import { FaRegWindowClose } from "react-icons/fa";
 // import components
 import ImageContainer from '../ImageContainer/ImageContainer';
 // import styles
 import './RecipeStyle.css';
 
-const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
+const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
   const navigate = useNavigate();
   const isRecipeLiked = favoriteRecipes?.filter(favRecipe => favRecipe.id !== recipe.id);
@@ -42,10 +43,18 @@ const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe,
     )
   }
 
+  const handleDeleteRecipe = async (recipeId) => {
+    await fetch(`http://localhost:8000/api/recipes/${recipeId}`, {
+      method: 'DELETE'
+    })
+    handlSetAllRecipes(recipeId);
+    navigate('/recipes/');
+  }
+
   const recipeFull = () => {
     return (
       <>
-        <h2>{recipe.title}</h2>
+        <h2>{recipe?.title}</h2>
         <LikeButton onClick={handleClick}/>
         <div>{recipe.description}</div>
         <div>{recipe.ingredients}</div>
@@ -55,6 +64,7 @@ const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe,
         <div>{recipe.date_updated}</div>
         <ImageContainer src={recipe.image} alt={recipe.title} />
         <button onClick={handleOpenNotes}>Notes</button>
+        <div><span onClick={()=> handleDeleteRecipe(recipe.id)}><FaRegWindowClose /></span></div>
       </>
     )
   }

@@ -87,6 +87,14 @@ function App() {
     setLatestRecipe(recipeObject[0]);
   }
 
+  const handlSetAllRecipes = (recipeId) => {
+    setAllRecipes((prevAllRecipes) => (
+      prevAllRecipes.filter((r) => (
+        r.id !== recipeId
+      ))
+    ))
+  }
+
 
 
   return (
@@ -103,6 +111,7 @@ function App() {
         <Route path="/home/" element={
           <HomePage 
             latestRecipe={latestRecipe} 
+            handlSetAllRecipes={handlSetAllRecipes}
             favoriteRecipes={favoriteRecipes} 
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
@@ -113,6 +122,7 @@ function App() {
         <Route path="/recipes/" element={
           <RecipesPage 
             recipes={allRecipes} 
+            handlSetAllRecipes={handlSetAllRecipes}
             favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
@@ -122,6 +132,7 @@ function App() {
         {/* specific recipe */}
         <Route path={`/recipes/:id/`} element={
           <SpecificRecipePage 
+            handlSetAllRecipes={handlSetAllRecipes}
             favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
@@ -141,6 +152,7 @@ function App() {
         {/* favorite recipes */}
         <Route path="/favorites/" element={
           <RecipesPage 
+            handlSetAllRecipes={handlSetAllRecipes}
             recipes={favoriteRecipes} 
             favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 

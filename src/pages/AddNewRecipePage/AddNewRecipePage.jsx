@@ -24,7 +24,7 @@ const AddNewRecipePage = ({ updateAllRecipes, handleCurrentRecipe, handleLatestR
       }
 
       setTimeout(() => {
-        navigate('/all/');
+        navigate('/recipes/');
       }, 500);
 
     } catch(error) {
