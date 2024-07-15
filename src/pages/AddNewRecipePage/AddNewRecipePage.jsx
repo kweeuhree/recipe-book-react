@@ -48,7 +48,7 @@ const AddNewRecipePage = ({ updateAllRecipes, handleCurrentRecipe, handleLatestR
   return (
     <div className='create-from-container'>
       {/* form */}
-      <CreateForm type='recipe' post={postRecipe} />
+      <CreateForm post={postRecipe} />
       <p>{message}</p>
     </div>
   )

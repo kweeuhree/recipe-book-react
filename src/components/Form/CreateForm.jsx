@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CreateForm = ({ type, post }) => {
+const CreateForm = ({ post }) => {
     const [ CreateFormData, setCreateFormData ] = useState({
         title: '',
         description: '',
@@ -26,7 +26,7 @@ const CreateForm = ({ type, post }) => {
     }
   
     return (
-    <form onSubmit={handleSubmit}>
+    <form id="create-recipe" onSubmit={handleSubmit}>
 
     <label htmlFor="title">Recipe Title</label><br />
     <input 
