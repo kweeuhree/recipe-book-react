@@ -26,7 +26,6 @@ function App() {
   useEffect(()=> {
       const fetchAllRecipes = async () => {
         const recipesData = await fetchRecipes();
-        console.log(recipesData, 'recipes after fetching')
         
         setAllRecipes(recipesData);
         handleLatestRecipe(recipesData);
@@ -71,7 +70,6 @@ function App() {
       favRecipe => favRecipe.id === recipe.id
     );
 
-    console.log(found, 'found in handleFavorites')
 
     if(found) {
       setFavoriteRecipes((prev) => 
