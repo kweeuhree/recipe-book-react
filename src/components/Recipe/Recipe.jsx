@@ -33,7 +33,6 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
        <TitleSection headerTag="h3" title={recipe.title}/>
         <div>{recipe.description}</div>
         <div className='servings'>Servings: <span>{recipe.servings}</span></div>
-        {/* <LikeButton />        */}
         <ImageContainer src={recipe.image} alt={recipe.title} />
       </>
     )
@@ -49,7 +48,6 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
         <div>{recipe.servings}</div>
         <div>{recipe.date_created}</div>
         <div>{recipe.date_updated}</div>
-        {/* <LikeButton />   */}
         <ImageContainer src={recipe.image} alt={recipe.title} />
       </>
     )
