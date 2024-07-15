@@ -11,7 +11,8 @@ import './RecipeStyle.css';
 const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
   const navigate = useNavigate();
-  const isRecipeLiked = favoriteRecipes?.filter(favRecipe => favRecipe.id !== recipe.id);
+  const isRecipeLiked = favoriteRecipes?.find(favRecipe => favRecipe.id === recipe.id);
+  console.log(isRecipeLiked)
 
   const handleClick = (event) => {
     event.stopPropagation();
@@ -21,7 +22,7 @@ const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, 
 
   const LikeButton = ({ onClick }) => {
     return (
-      <div onClick={onClick} className={isRecipeLiked ? 'red' : ''} >
+      <div onClick={onClick} className={isRecipeLiked ? 'red' : 'white'} >
         <AiFillLike />
       </div>)
   }
