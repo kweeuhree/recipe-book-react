@@ -8,7 +8,7 @@ import './RecipeStyle.css';
 
 const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type }) => {
 
-  console.log(recipe.isLiked, 'isliked in Recipe')
+  // console.log(recipe.isLiked, 'isliked in Recipe')
 
   const handleClick = (event, recipe) => {
     handleFavorites(event, recipe);
