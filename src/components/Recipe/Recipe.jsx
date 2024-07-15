@@ -10,38 +10,24 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
 
   // console.log(recipe.isLiked, 'isliked in Recipe')
 
-  const handleClick = (event, recipe) => {
-    handleFavorites(event, recipe);
+  const handleClick = (event) => {
+    event.stopPropagation();
+    handleFavorites(recipe);
   } 
 
-  const TitleSection = ({ headerTag , title, recipe }) => {
-
-    return (
-      <div className='title-section'>
-         {React.createElement(headerTag, {}, title)}
-         <LikeButton onClick={() =>handleClick(recipe)}/>
-      </div>
-    )
-  }
 
   const LikeButton = ({ onClick }) => {
-
-    const handleButtonClick = (event) => {
-      event.stopPropagation();
-      onClick(event);
-    }
-
     return (
-      <div onClick={onClick}>
-        <AiFillLike className={recipe?.isLiked ? 'red' : ''} />
-      </div>
-    );
+      <div onClick={onClick} className={recipe?.isLiked ? 'red' : ''} >
+        <AiFillLike />
+      </div>)
   }
 
   const recipePreview = () => {
     return (
       <>
-       <TitleSection headerTag="h3" title={recipe?.title} recipe={recipe} />
+        <h2>{recipe.title}</h2>
+        <LikeButton onClick={handleClick} />
         <div>{recipe?.description}</div>
         <div className='servings'>Servings: <span>{recipe?.servings}</span></div>
         <ImageContainer src={recipe?.image} alt={recipe?.title} />
@@ -52,7 +38,8 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
   const recipeFull = () => {
     return (
       <>
-        <TitleSection headerTag="h2" title={recipe.title} recipe={recipe}/>
+        <h2>{recipe.title}</h2>
+        <LikeButton onClick={handleClick}/>
         <div>{recipe.description}</div>
         <div>{recipe.ingredients}</div>
         <div>{recipe.instructions}</div>

@@ -79,7 +79,6 @@ function App() {
       await likeARecipe(recipe.id);
     }
 
-    updateFavoriteRecipes();
   }
 
   // update latest recipe
