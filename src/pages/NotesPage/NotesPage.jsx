@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import CreateNoteForm from '../../components/Form/CreateNoteForm.jsx';
 
 const NotesPage = ({ recipes }) => {
 
+  const [ currentNotes, setCurrentNotes ] = useState([]);
   const [ newNote, setNewNote ] = useState(false);
   const { recipeId } = useParams();
-  console.log(recipeId)
   const recipe = recipes.find((r) => (r.id === parseInt(recipeId, 10)));
 
-  console.log(recipe, 'recipe');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setCurrentNotes(recipe?.notes);
+  }, [recipe])
+
 
   const handleCreateNote = () => {
     setNewNote(prev => !prev)
+  }
+
+  const updateCurrentNotes = (newNote) => {
+    setCurrentNotes((prevCurrentNotes) => ([
+      ...prevCurrentNotes,
+      newNote
+    ]))
   }
 
   const postNote = async (data) => {
@@ -24,19 +36,23 @@ const NotesPage = ({ recipes }) => {
 
       if(response.ok) {
         const newNote = await response.json();
+        updateCurrentNotes(newNote);
       }
 
-      recipe.notes.push(newNote);
-
-    } catch( error) {
+      } catch( error) {
       throw new Error('Failed to create a new Note');
     }
   }
 
+  const handleGoBack = () => {
+    navigate(-1);
+  }
+
   return (
     <>
-      {recipe?.notes.length > 0 ? (
-          recipe.notes.map((note) => (
+      <button onClick={handleGoBack}>Back to recipe</button>
+      {currentNotes?.length > 0 ? (
+          currentNotes.map((note) => (
             <div key={note.id}>{note.body}</div>
           ))
         ) : (
