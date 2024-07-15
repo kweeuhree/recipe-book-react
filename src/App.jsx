@@ -54,7 +54,7 @@ function App() {
 
   // handle liked recipes
   const updateFavoriteRecipes = (recipesData) => {
-    const likedRecipes = recipesData.filter((recipe) => (
+    const likedRecipes = recipesData?.filter((recipe) => (
       recipe.isLiked === true
     ))
     setFavoriteRecipes(likedRecipes);
@@ -65,7 +65,6 @@ function App() {
   // handle adding or removing from favorite recipes
   const handleFavorites = async (recipe) => {
 
-    recipe.isLiked = true;
     const found = favoriteRecipes.find(
       favRecipe => favRecipe.id === recipe.id
     );
@@ -80,6 +79,7 @@ function App() {
       await likeARecipe(recipe.id);
     }
 
+    updateFavoriteRecipes();
   }
 
   // update latest recipe
