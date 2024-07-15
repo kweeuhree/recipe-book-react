@@ -14,6 +14,7 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
               key={'latestRecipe' + latestRecipe.id} 
               recipe={latestRecipe}
               type='preview'
+              favoriteRecipes={favoriteRecipes}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe}
               onClick={()=> handleCurrentRecipe(latestRecipe)}
@@ -28,6 +29,7 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
               key={recipe?.id} 
               type='preview'
               recipe={recipe}
+              favoriteRecipes={favoriteRecipes}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe}
                />

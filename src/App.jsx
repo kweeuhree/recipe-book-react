@@ -112,6 +112,7 @@ function App() {
         <Route path="/recipes/" element={
           <RecipesPage 
             recipes={allRecipes} 
+            favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
             currentRecipe={currentRecipe}/>
@@ -129,6 +130,7 @@ function App() {
         <Route path="/favorites/" element={
           <RecipesPage 
             recipes={favoriteRecipes} 
+            favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe} />
         } />

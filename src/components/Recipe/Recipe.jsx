@@ -6,7 +6,7 @@ import ImageContainer from '../ImageContainer/ImageContainer';
 // import styles
 import './RecipeStyle.css';
 
-const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type }) => {
+const Recipe = ({ recipe, favoriteRecipes, handleFavorites, onClick, handleCurrentRecipe, type }) => {
 
   // console.log(recipe.isLiked, 'isliked in Recipe')
 
@@ -18,7 +18,7 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
 
   const LikeButton = ({ onClick }) => {
     return (
-      <div onClick={onClick} className={recipe?.isLiked ? 'red' : ''} >
+      <div onClick={onClick} className={favoriteRecipes.includes(recipe) ? 'red' : ''} >
         <AiFillLike />
       </div>)
   }
