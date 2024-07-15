@@ -8,6 +8,7 @@ const CreateNoteForm = ({ post }) => {
         event.preventDefault();
         const noteData = new FormData(event.target);
         post(noteData);
+        setCreateNoteFormData({body: ''});
     }
     
     const handleChange = (event) => {
