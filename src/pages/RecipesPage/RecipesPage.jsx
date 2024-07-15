@@ -7,7 +7,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  // const recipesJSX = 
+  console.log(recipes, 'inside recipespage')
 
   const handleClick = () => {
     return pathname === '/all/' ? navigate('/favorites/') : navigate(`/all/`); 
@@ -28,13 +28,15 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
 
       {/* recipes */}
       <div>
-        { recipes.length > 0 ? (
+        { recipes?.length > 0 ? (
           recipes.map((recipe) => (
             <Recipe 
               key={recipe.id} 
+              type='preview'
               recipe={recipe}
-              handleFavorites={handleFavorites} 
-              handleCurrentRecipe={handleCurrentRecipe}
+              handleFavorites={handleFavorites}
+              handleCurrentRecipe={handleCurrentRecipe} 
+              onClick={()=> handleCurrentRecipe(recipe)}
             />
           ))
         ) : (

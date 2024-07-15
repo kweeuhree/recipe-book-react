@@ -1,8 +1,20 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
+import Recipe from '../../components/Recipe/Recipe';
 
-const SpecificRecipePage = () => {
+const SpecificRecipePage = ({ handleFavorites, handleCurrentRecipe, currentRecipe }) => {  
+
+  console.log(currentRecipe, 'inside SpecificRecipePage')
   return (
-    <div>SpecificRecipePage</div>
+    <div>
+      <Recipe 
+          key={currentRecipe?.id} 
+          recipe={currentRecipe}
+          type="full"
+          handleFavorites={handleFavorites}
+          handleCurrentRecipe={handleCurrentRecipe}      
+      />
+    </div>
   )
 }
 

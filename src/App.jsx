@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 // import route, routes, and navigate component
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 // import fetching logic
 import { fetchRecipes, unlikeFavoriteRecipe, likeARecipe } from './utils/fetchRecipes';
 // import components
@@ -20,17 +20,23 @@ function App() {
   const [ currentRecipe, setCurrentRecipe ] = useState(null);
   const [ latestRecipe, setLatestRecipe ] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(()=> {
       const fetchAllRecipes = async () => {
         const recipesData = await fetchRecipes();
         
-        setAllRecipes((prev) => ([...prev, recipesData]));
+        setAllRecipes(recipesData);
         handleLatestRecipe(recipesData);
         updateFavoriteRecipes(recipesData);
       }
       
       fetchAllRecipes();
   }, [])
+
+  useEffect(() => {
+    updateAllRecipes();
+  }, [latestRecipe]);
 
   const updateFavoriteRecipes = (recipesData) => {
     const likedRecipes = recipesData.filter((recipe) => (
@@ -44,7 +50,7 @@ function App() {
   // handle updating current recipe
   const handleCurrentRecipe = (recipe) => {
     setCurrentRecipe(recipe);
-    return <Navigate to={`/recipes/${recipe.id}/`} />;
+    navigate(`/recipes/${recipe.id}`);
   }
 
   // handle adding or removing from favorite recipes
@@ -66,13 +72,19 @@ function App() {
 
   }
 
+  // update latest recipe
   const handleLatestRecipe = (recipeObject) => {
-    // console.log(recipeObject[0], 'recipe object 0');
-    const newRecipe = recipeObject[0];
-    // console.log(newRecipe, 'new recipe');
-    setLatestRecipe((prev) => ({...prev, newRecipe}));
-    // console.log(latestRecipe, "latest recipe");
+    // console.log(recipeObject)
+    setLatestRecipe(recipeObject[0]);
   }
+
+  // update all recipes
+  const updateAllRecipes = (recipe) => {
+    recipe &&
+    setAllRecipes((prevAllRecipes) => ([recipe, ...prevAllRecipes]));
+  }
+
+  console.log(allRecipes, 'all recipes inside app')
 
   return (
     <>
@@ -97,15 +109,17 @@ function App() {
         {/* all recipes */}
         <Route path="/all/" element={
           <RecipesPage 
-            recipes={allRecipes[0]} 
+            recipes={allRecipes} 
             handleFavorites={handleFavorites} 
+            handleCurrentRecipe={handleCurrentRecipe}
             currentRecipe={currentRecipe}/>
         } />
 
         {/* specific recipe */}
-        <Route path={`/recipe/:id/`} element={
+        <Route path={`/recipes/:id/`} element={
           <SpecificRecipePage 
             handleFavorites={handleFavorites} 
+            handleCurrentRecipe={handleCurrentRecipe}
             currentRecipe={currentRecipe} />
         } />
 
@@ -120,6 +134,7 @@ function App() {
         {/* add new recipe */}
         <Route path="/add/" element={
           <AddNewRecipePage
+            updateAllRecipes={updateAllRecipes}
             handleCurrentRecipe={handleCurrentRecipe}
             handleLatestRecipe={handleLatestRecipe} />
         } />

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 // import components
 import CreateForm from '../../components/Form/CreateForm';
 
-const AddNewRecipePage = () => {
+const AddNewRecipePage = ({ updateAllRecipes, handleCurrentRecipe, handleLatestRecipe }) => {
 
   const [ message, setMessage ] = useState('');
   const navigate = useNavigate();
@@ -16,7 +16,11 @@ const AddNewRecipePage = () => {
       })
 
       if(response.ok) {
+        const newRecipe = await response.json(); 
+
         updateMessage('New Recipe saved!');
+        handleLatestRecipe(newRecipe);
+        updateAllRecipes(newRecipe);
       }
 
       setTimeout(() => {

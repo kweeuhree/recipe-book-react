@@ -3,7 +3,7 @@ import Recipe from '../../components/Recipe/Recipe';
 
 const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, currentRecipe }) => {
   
-
+console.log(latestRecipe, 'latest recipe in homepage')
   return (
     <main>
       {/* latest recipe */}
@@ -11,10 +11,12 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
         <p>Latest Recipe:</p>
            { latestRecipe && 
             <Recipe 
-              key={'latestRecipe' + latestRecipe.newRecipe.id} 
-              recipe={latestRecipe.newRecipe}
+              key={'latestRecipe' + latestRecipe.id} 
+              recipe={latestRecipe}
+              type='preview'
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe}
+              onClick={()=> handleCurrentRecipe(latestRecipe)}
              /> }
       </div>
 
@@ -24,6 +26,7 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
           favoriteRecipes.map((recipe) => (
             <Recipe 
               key={recipe.id} 
+              type='preview'
               recipe={recipe}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe}
