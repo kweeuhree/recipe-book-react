@@ -121,6 +121,7 @@ function App() {
         {/* specific recipe */}
         <Route path={`/recipes/:id/`} element={
           <SpecificRecipePage 
+            favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
             currentRecipe={currentRecipe} />
