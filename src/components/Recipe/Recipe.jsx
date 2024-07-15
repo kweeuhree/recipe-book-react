@@ -6,7 +6,7 @@ import ImageContainer from '../ImageContainer/ImageContainer';
 // import styles
 import './RecipeStyle.css';
 
-const Recipe = ({ recipe, favoriteRecipes, handleFavorites, onClick, handleCurrentRecipe, type }) => {
+const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
   // console.log(recipe.isLiked, 'isliked in Recipe')
 
