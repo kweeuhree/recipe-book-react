@@ -1,4 +1,6 @@
 import React from 'react';
+// import icons
+import { AiFillLike } from "react-icons/ai";
 // import components
 import ImageContainer from '../ImageContainer/ImageContainer';
 // import styles
@@ -14,7 +16,9 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
         <h3>{recipe.title}</h3>
         <div>{recipe.description}</div>
         <div className='servings'>Servings: <span>{recipe.servings}</span></div>
-        <div>{recipe.date_isLiked}</div>
+        <div>
+          <AiFillLike className={recipe.date_isLiked ? 'red' : ''} />
+        </div>
         <ImageContainer src={recipe.image} alt={recipe.title} />
       </>
     )

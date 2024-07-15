@@ -2,3 +2,13 @@
     border: 1px solid white;
     margin-block-end: 10%;
 }
+
+/* override default react icon styling */
+.recipe svg {
+    width: 1.5em !important;
+    height: 1.5em !important;
+}
+
+.red {
+    color: red;
+}
