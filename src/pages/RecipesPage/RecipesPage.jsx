@@ -10,7 +10,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
   // console.log(recipes, 'inside recipespage')
 
   const handleClick = () => {
-    return pathname === '/all/' ? navigate('/favorites/') : navigate(`/all/`); 
+    return pathname === '/recipes/' ? navigate('/favorites/') : navigate(`/recipes/`); 
   }
 
   return (
@@ -21,7 +21,7 @@ const RecipesPage = ({ recipes, handleFavorites, handleCurrentRecipe }) => {
 
         <p 
           onClick={handleClick}>
-            {pathname === '/all/' ? 'Favorite Recipes' : 'All Recipes'}
+            {pathname === '/recipes/' ? 'Favorite Recipes' : 'All Recipes'}
         </p>
 
       </div>

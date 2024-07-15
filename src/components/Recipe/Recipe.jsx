@@ -8,6 +8,7 @@ import './RecipeStyle.css';
 
 const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type }) => {
 
+  console.log(recipe.isLiked, 'isliked in Recipe')
 
   const handleClick = (event, recipe) => {
     handleFavorites(event, recipe);
@@ -26,7 +27,7 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
   const LikeButton = ({ onClick }) => {
     return (
       <div onClick={onClick}>
-        <AiFillLike className={recipe?.date_isLiked ? 'red' : ''} />
+        <AiFillLike className={recipe?.isLiked ? 'red' : ''} />
       </div>
     );
   }

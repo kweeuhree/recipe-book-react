@@ -18,7 +18,7 @@ export const fetchRecipes = async () => {
 
 export const unlikeFavoriteRecipe = async (recipeId) => {
     try {
-      const response = await fetch(`/api/recipes/${recipeId}/unlike/`, {
+      const response = await fetch(`http://localhost:8000/api/recipes/${recipeId}/unlike/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const unlikeFavoriteRecipe = async (recipeId) => {
 export const likeARecipe = async (recipeId) => {
   console.log(recipeId)
     try {
-      const response = await fetch(`/api/recipes/${recipeId}/like/`, {
+      const response = await fetch(`http://localhost:8000/api/recipes/${recipeId}/like/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

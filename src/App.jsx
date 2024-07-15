@@ -26,6 +26,7 @@ function App() {
   useEffect(()=> {
       const fetchAllRecipes = async () => {
         const recipesData = await fetchRecipes();
+        console.log(recipesData, 'recipes after fetching')
         
         setAllRecipes(recipesData);
         handleLatestRecipe(recipesData);
@@ -58,15 +59,19 @@ function App() {
       recipe.isLiked === true
     ))
     setFavoriteRecipes(likedRecipes);
+    console.log(likedRecipes);
   }
 
 
   // handle adding or removing from favorite recipes
   const handleFavorites = async (recipe) => {
 
+    recipe.isLiked = true;
     const found = favoriteRecipes.find(
       favRecipe => favRecipe.id === recipe.id
     );
+
+    console.log(found, 'found in handleFavorites')
 
     if(found) {
       setFavoriteRecipes((prev) => 
@@ -107,7 +112,7 @@ function App() {
         } />
 
         {/* all recipes */}
-        <Route path="/all/" element={
+        <Route path="/recipes/" element={
           <RecipesPage 
             recipes={allRecipes} 
             handleFavorites={handleFavorites} 

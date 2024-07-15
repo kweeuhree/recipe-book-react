@@ -8,7 +8,7 @@ const NavBar = () => {
 
     const links = [
         ['home'],
-        ['all', 'all recipes'],
+        ['recipes', 'all recipes'],
         ['favorites', 'favorite recipes'],
         ['add', 'add new']
     ];
