@@ -10,15 +10,30 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
 
   console.log(recipe, 'recipe in Recipe');
 
+  const TitleSection = ({ headerTag , title }) => {
+    return (
+      <div className='title-section'>
+         {React.createElement(headerTag, {}, title)}
+         <LikeButton />
+      </div>
+    )
+  }
+
+  const LikeButton = () => {
+    return (
+      <div>
+        <AiFillLike className={recipe.date_isLiked ? 'red' : ''} />
+      </div>
+    );
+  }
+
   const recipePreview = () => {
     return (
       <>
-        <h3>{recipe.title}</h3>
+       <TitleSection headerTag="h3" title={recipe.title}/>
         <div>{recipe.description}</div>
         <div className='servings'>Servings: <span>{recipe.servings}</span></div>
-        <div>
-          <AiFillLike className={recipe.date_isLiked ? 'red' : ''} />
-        </div>
+        {/* <LikeButton />        */}
         <ImageContainer src={recipe.image} alt={recipe.title} />
       </>
     )
@@ -27,14 +42,14 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
   const recipeFull = () => {
     return (
       <>
-        <h2>{recipe.title}</h2>
+        <TitleSection headerTag="h2" title={recipe.title}/>
         <div>{recipe.description}</div>
         <div>{recipe.ingredients}</div>
         <div>{recipe.instructions}</div>
         <div>{recipe.servings}</div>
         <div>{recipe.date_created}</div>
         <div>{recipe.date_updated}</div>
-        <div>{recipe.date_isLiked}</div>
+        {/* <LikeButton />   */}
         <ImageContainer src={recipe.image} alt={recipe.title} />
       </>
     )

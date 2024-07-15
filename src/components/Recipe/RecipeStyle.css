@@ -12,3 +12,9 @@
 .red {
     color: red;
 }
+
+.title-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
