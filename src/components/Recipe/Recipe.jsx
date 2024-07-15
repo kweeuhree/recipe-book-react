@@ -25,6 +25,12 @@ const Recipe = ({ recipe, handleFavorites, onClick, handleCurrentRecipe, type })
   }
 
   const LikeButton = ({ onClick }) => {
+
+    const handleButtonClick = (event) => {
+      event.stopPropagation();
+      onClick(event);
+    }
+
     return (
       <div onClick={onClick}>
         <AiFillLike className={recipe?.isLiked ? 'red' : ''} />

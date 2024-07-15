@@ -22,7 +22,7 @@ const HomePage = ({ latestRecipe, favoriteRecipes, handleFavorites, handleCurren
 
       {/* favorite recipes */}
       <div className='favorite-carousel'>
-        { favoriteRecipes.length > 0  ?
+        { favoriteRecipes?.length > 0  ?
           favoriteRecipes.map((recipe) => (
             <Recipe 
               key={recipe?.id} 
