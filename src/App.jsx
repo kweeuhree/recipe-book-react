@@ -8,6 +8,7 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 // import pages
 import RecipesPage from './pages/RecipesPage/RecipesPage';
+import NotesPage from './pages/NotesPage/NotesPage';
 import HomePage from './pages/HomePage/HomePage';
 import SpecificRecipePage from './pages/SpecificRecipePage/SpecificRecipePage';
 import AddNewRecipePage from './pages/AddNewRecipePage/AddNewRecipePage';
@@ -125,6 +126,16 @@ function App() {
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
             currentRecipe={currentRecipe} />
+        } />
+
+        {/* specific recipe */}
+        <Route path={`/notes/:recipeId/`} element={
+          <NotesPage 
+            recipes={allRecipes}
+            // handleFavorites={handleFavorites} 
+            // handleCurrentRecipe={handleCurrentRecipe}
+            // currentRecipe={currentRecipe}
+             />
         } />
 
         {/* favorite recipes */}

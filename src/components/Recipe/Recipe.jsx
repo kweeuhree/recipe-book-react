@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // import icons
 import { AiFillLike } from "react-icons/ai";
 // import components
@@ -8,6 +9,7 @@ import './RecipeStyle.css';
 
 const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
+  const navigate = useNavigate();
   const isRecipeLiked = favoriteRecipes?.filter(favRecipe => favRecipe.id !== recipe.id);
 
   const handleClick = (event) => {
@@ -21,6 +23,11 @@ const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe,
       <div onClick={onClick} className={isRecipeLiked ? 'red' : ''} >
         <AiFillLike />
       </div>)
+  }
+
+  const handleOpenNotes = (event) => {
+    event.stopPropagation(); 
+    navigate(`/notes/${recipe.id}`);
   }
 
   const recipePreview = () => {
@@ -47,6 +54,7 @@ const Recipe = ({ recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe,
         <div>{recipe.date_created}</div>
         <div>{recipe.date_updated}</div>
         <ImageContainer src={recipe.image} alt={recipe.title} />
+        <button onClick={handleOpenNotes}>Notes</button>
       </>
     )
   }
