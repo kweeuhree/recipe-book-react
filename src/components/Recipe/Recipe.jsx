@@ -14,6 +14,8 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
   const [ edit, setEdit ] = useState(false);
   const navigate = useNavigate();
   const isRecipeLiked = favoriteRecipes?.find(favRecipe => favRecipe.id === recipe.id);
+  const dateCreated = new Date(recipe.date_created).toDateString();
+  const dateUpdated = new Date(recipe.date_updated).toDateString();
   // console.log(isRecipeLiked)
 
   const handleClick = (event) => {
@@ -67,8 +69,8 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
         <div>{recipe.ingredients}</div>
         <div>{recipe.instructions}</div>
         <div>{recipe.servings}</div>
-        <div>{recipe.date_created}</div>
-        <div>{recipe.date_updated}</div>
+        <div>{dateCreated}</div>
+        <div>{dateUpdated}</div>
         <ImageContainer src={recipe.image} alt={recipe.title} />
         <button onClick={handleOpenNotes}>Notes</button>
         <div><span onClick={()=> handleDeleteRecipe(recipe.id)}><FaRegWindowClose /></span></div>
