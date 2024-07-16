@@ -1,6 +1,6 @@
 export const fetchRecipes = async () => {
    try {
-    const response = await fetch('http://3.141.17.82/api/recipes/', {
+    const response = await fetch('http://3.145.94.65/api/recipes/', {
         method: 'GET'
     })
 
@@ -17,7 +17,7 @@ export const fetchRecipes = async () => {
 
 export const unlikeFavoriteRecipe = async (recipeId) => {
     try {
-      const response = await fetch(`http://3.141.17.82/api/recipes/${recipeId}/unlike/`, {
+      const response = await fetch(`http://3.145.94.65/api/recipes/${recipeId}/unlike/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const unlikeFavoriteRecipe = async (recipeId) => {
 
 export const likeARecipe = async (recipeId) => {
     try {
-      const response = await fetch(`http://3.141.17.82/api/recipes/${recipeId}/like/`, {
+      const response = await fetch(`http://3.145.94.65/api/recipes/${recipeId}/like/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

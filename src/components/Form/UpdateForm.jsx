@@ -27,7 +27,7 @@ const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit, ha
         event.preventDefault();
         const recipeData = new FormData(event.target);
         try {
-            const response = await fetch(`http://3.141.17.82/api/recipes/${recipe.id}/`, {
+            const response = await fetch(`http://3.145.94.65/api/recipes/${recipe.id}/`, {
                 method: 'PUT',
                 body: recipeData
             })

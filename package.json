@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "http://3.141.17.82/",
+  "proxy": "http://3.145.94.65/",
   "private": true,
   "version": "0.0.0",
   "type": "module",

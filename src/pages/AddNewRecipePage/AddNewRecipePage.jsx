@@ -10,7 +10,7 @@ const AddNewRecipePage = ({ updateAllRecipes, handleCurrentRecipe, handleLatestR
 
   const postRecipe = async(recipeData) => {
     try {
-      const response = await fetch('http://3.141.17.82/api/recipes/', {
+      const response = await fetch('http://3.145.94.65/api/recipes/', {
         method: 'POST',
         body: recipeData 
       })
