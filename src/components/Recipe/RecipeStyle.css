@@ -1,6 +1,10 @@
 .recipe {
     border: 1px solid white;
     margin-block-end: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* override default react icon styling */
