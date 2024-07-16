@@ -38,7 +38,7 @@ function App() {
 
   //update each time there is a new recipe added
   useEffect(() => {
-    updateAllRecipes();
+    updateAllRecipes(latestRecipe);
   }, [latestRecipe]);
 
  // update all recipes

@@ -9,7 +9,8 @@ const NotesPage = ({ recipes }) => {
   const [ currentNotes, setCurrentNotes ] = useState([]);
   const [ newNote, setNewNote ] = useState(false);
   const { recipeId } = useParams();
-  const recipe = recipes.find((r) => (r.id === parseInt(recipeId, 10)));
+  const recipe = recipes.find((r) => (r.id === recipeId));
+  console.log(recipe);
 
   const navigate = useNavigate();
 
@@ -51,7 +52,7 @@ const NotesPage = ({ recipes }) => {
   }
 
   const handleDeleteNote = async (note) => {
-      await fetch(`http://localhost:8000/api/recipes/${recipeId}/notes/${note.id}`, {
+      await fetch(`http://localhost:8000/api/recipes/${recipeId}/notes/${note.id}/`, {
         method: 'DELETE'
       })
 

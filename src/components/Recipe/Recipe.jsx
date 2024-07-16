@@ -12,7 +12,7 @@ const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, 
 
   const navigate = useNavigate();
   const isRecipeLiked = favoriteRecipes?.find(favRecipe => favRecipe.id === recipe.id);
-  console.log(isRecipeLiked)
+  // console.log(isRecipeLiked)
 
   const handleClick = (event) => {
     event.stopPropagation();
@@ -35,7 +35,7 @@ const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, 
   const recipePreview = () => {
     return (
       <>
-        <h2>{recipe.title}</h2>
+        <h2>{recipe?.title}</h2>
         <LikeButton onClick={handleClick} />
         <div>{recipe?.description}</div>
         <div className='servings'>Servings: <span>{recipe?.servings}</span></div>
