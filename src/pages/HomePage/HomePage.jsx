@@ -25,6 +25,7 @@ const HomePage = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes
 
       {/* favorite recipes */}
       <div className='favorite-carousel'>
+      <p>Favorite Recipes:</p>
         { favoriteRecipes?.length > 0  ?
           favoriteRecipes.map((recipe) => (
             <Recipe 

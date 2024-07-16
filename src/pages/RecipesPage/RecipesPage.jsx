@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 import Recipe from '../../components/Recipe/Recipe';
+import './RecipesPageStyle.css';
 
 const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilterAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe }) => {
   const navigate = useNavigate();
@@ -15,16 +16,6 @@ const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilt
 
   return (
     <>
-    {/* top section */}
-      <div className="top-section">
-        <h2>recipe book</h2>
-
-        <p 
-          onClick={handleClick}>
-            {pathname === '/recipes/' ? 'Favorite Recipes' : 'All Recipes'}
-        </p>
-
-      </div>
 
       {/* recipes */}
       <div>
@@ -46,6 +37,17 @@ const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilt
         ) : (
           <p>No recipes yet</p>
         )}
+      </div>
+
+       {/* bottom section */}
+      <div className="bottom-section">
+        <h2>recipe book</h2>
+
+        <button 
+          onClick={handleClick}>
+            {pathname === '/recipes/' ? 'Favorite Recipes' : 'All Recipes'}
+        </button>
+
       </div>
     </>
   )

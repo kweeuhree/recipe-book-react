@@ -72,9 +72,11 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
         <div>{dateCreated}</div>
         <div>{dateUpdated}</div>
         <ImageContainer src={recipe.image} alt={recipe.title} />
-        <button onClick={handleOpenNotes}>Notes</button>
-        <div><span onClick={()=> handleDeleteRecipe(recipe.id)}><FaRegWindowClose /></span></div>
-        <div><span onClick={()=> handleUpdateRecipe()}><FaRegEdit /></span></div>
+        <div className='button-container'>
+          <button onClick={handleOpenNotes}>Notes</button>
+          <button><span onClick={()=> handleDeleteRecipe(recipe.id)}><FaRegWindowClose /></span></button>
+          <button><span onClick={()=> handleUpdateRecipe()}><FaRegEdit /></span></button>
+        </div>
       </>
     )
   }
