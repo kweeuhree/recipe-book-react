@@ -32,7 +32,7 @@ const NotesPage = ({ recipes }) => {
 
   const postNote = async (data) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/recipes/${recipeId}/notes/`, {
+      const response = await fetch(`http://3.141.17.82/api/recipes/${recipeId}/notes/`, {
         method: 'POST',
         body: data
       })
@@ -52,7 +52,7 @@ const NotesPage = ({ recipes }) => {
   }
 
   const handleDeleteNote = async (note) => {
-      await fetch(`http://localhost:8000/api/recipes/${recipeId}/notes/${note.id}/`, {
+      await fetch(`http://3.141.17.82/api/recipes/${recipeId}/notes/${note.id}/`, {
         method: 'DELETE'
       })
 

@@ -49,7 +49,7 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
   }
 
   const handleDeleteRecipe = async (recipeId) => {
-    await fetch(`http://localhost:8000/api/recipes/${recipeId}`, {
+    await fetch(`http://3.141.17.82/api/recipes/${recipeId}`, {
       method: 'DELETE'
     })
     handleFilterAllRecipes(recipeId);
