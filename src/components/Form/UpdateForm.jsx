@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit }) => {
+const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit, handleLatestRecipe }) => {
     
     const [ updateFormData, setUpdateFormData ] = useState({
         id: recipe.id,
@@ -10,7 +10,7 @@ const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit }) 
         ingredients: recipe.ingredients,
         instructions: recipe.instructions,
         servings: recipe.servings,
-        image: recipe.image
+        image: null
     })
 
     const navigate = useNavigate();
@@ -36,7 +36,8 @@ const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit }) 
                 const updatedRecipe = await response.json();
                 handleCurrentRecipe(updatedRecipe);
                 navigate(`/recipes/${updatedRecipe.id}/`);
-                updateAllRecipes(updatedRecipe);  
+                handleLatestRecipe(updatedRecipe);
+                updateAllRecipes(updatedRecipe);
                 setEdit(false);
                 console.log(updatedRecipe, 'updated recipe');              
             }
@@ -100,14 +101,6 @@ const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit }) 
         onChange={handleChange} 
         required 
         placeholder="Number of servings"
-    /><br />
-
-    <label htmlFor="image">Image</label><br />
-    <input 
-        type="file" 
-        name="image" 
-        id="image" 
-        onChange={handleChange} 
     /><br />
 
         <input type="submit" value="Submit" />

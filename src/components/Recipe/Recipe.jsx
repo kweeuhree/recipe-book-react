@@ -9,7 +9,7 @@ import UpdateForm from '../Form/UpdateForm';
 // import styles
 import './RecipeStyle.css';
 
-const Recipe = ({ updateAllRecipes, handleFilterAllRecipes, recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
+const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
   const [ edit, setEdit ] = useState(false);
   const navigate = useNavigate();
@@ -82,7 +82,7 @@ const Recipe = ({ updateAllRecipes, handleFilterAllRecipes, recipe, favoriteReci
           <div className='recipe' onClick={()=> handleCurrentRecipe(recipe)}>
             { type === 'full' ? recipeFull() : recipePreview() }
           </div>
-          { edit && <UpdateForm setEdit={setEdit} handleCurrentRecipe={handleCurrentRecipe} recipe={recipe} updateAllRecipes={updateAllRecipes}/>}
+          { edit && <UpdateForm setEdit={setEdit} updateAllRecipes={updateAllRecipes} handleLatestRecipe={handleLatestRecipe} handleCurrentRecipe={handleCurrentRecipe} recipe={recipe} />}
       </>
   )
 }

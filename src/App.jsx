@@ -27,9 +27,9 @@ function App() {
   useEffect(()=> {
       const fetchAllRecipes = async () => {
         const recipesData = await fetchRecipes();
-        
+        const latestRecipe = recipesData[0]
         setAllRecipes(recipesData);
-        handleLatestRecipe(recipesData);
+        handleLatestRecipe(latestRecipe);
         updateFavoriteRecipes(recipesData);
       }
       
@@ -43,8 +43,27 @@ function App() {
 
  // update all recipes
   const updateAllRecipes = (recipe) => {
-    recipe &&
-    setAllRecipes((prevAllRecipes) => ([recipe, ...prevAllRecipes]));
+    // recipe &&
+    const found = allRecipes.find(r => r.id === recipe.id);
+    if(found) {
+      setAllRecipes((prevAllRecipes) => {
+        return prevAllRecipes.map((r) => {
+          if (r.id === recipe.id) {
+            return {
+              ...r,
+              title: recipe.title || r.title,
+              description: recipe.description || r.description,
+              ingredients: recipe.ingredients || r.ingredients,
+              instructions: recipe.instructions || r.instructions,
+              servings: recipe.servings || r.servings
+            };
+          }
+          return r; // return recipes that weren't updated
+        });
+      });
+    } else {
+      setAllRecipes((prevAllRecipes) => ([recipe, ...prevAllRecipes]));
+    }
   }
 
   // handle updating current recipe
@@ -83,8 +102,12 @@ function App() {
   }
 
   // update latest recipe
-  const handleLatestRecipe = (recipeObject) => {
-    setLatestRecipe(recipeObject[0]);
+  const handleLatestRecipe = (recipe) => {
+    
+    console.log(latestRecipe, 'current latest recipe');
+    console.log(recipe, 'recipe to update')
+    setLatestRecipe(recipe);
+    
   }
 
   const handleFilterAllRecipes = (recipeId) => {
@@ -111,6 +134,7 @@ function App() {
         <Route path="/home/" element={
           <HomePage 
             latestRecipe={latestRecipe} 
+            handleLatestRecipe={handleLatestRecipe}
             updateAllRecipes={updateAllRecipes}
             handleFilterAllRecipes={handleFilterAllRecipes}
             favoriteRecipes={favoriteRecipes} 
@@ -122,6 +146,7 @@ function App() {
         {/* all recipes */}
         <Route path="/recipes/" element={
           <RecipesPage 
+            handleLatestRecipe={handleLatestRecipe}
             recipes={allRecipes} 
             updateAllRecipes={updateAllRecipes}
             handleFilterAllRecipes={handleFilterAllRecipes}
@@ -134,6 +159,7 @@ function App() {
         {/* specific recipe */}
         <Route path={`/recipes/:id/`} element={
           <SpecificRecipePage 
+            handleLatestRecipe={handleLatestRecipe}
             updateAllRecipes={updateAllRecipes}
             handleFilterAllRecipes={handleFilterAllRecipes}
             favoriteRecipes={favoriteRecipes}
@@ -155,6 +181,7 @@ function App() {
         {/* favorite recipes */}
         <Route path="/favorites/" element={
           <RecipesPage 
+            handleLatestRecipe={handleLatestRecipe}
             updateAllRecipes={updateAllRecipes}
             handleFilterAllRecipes={handleFilterAllRecipes}
             recipes={favoriteRecipes} 

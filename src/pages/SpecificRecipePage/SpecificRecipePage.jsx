@@ -1,7 +1,7 @@
 import React from 'react'
 import Recipe from '../../components/Recipe/Recipe';
 
-const SpecificRecipePage = ({ handleFilterAllRecipes, updateAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe, currentRecipe }) => {  
+const SpecificRecipePage = ({ handleFilterAllRecipes, updateAllRecipes, handleLatestRecipe, handleFavorites, favoriteRecipes, handleCurrentRecipe, currentRecipe }) => {  
 
   // console.log(currentRecipe, 'inside SpecificRecipePage')
   return (
@@ -11,6 +11,7 @@ const SpecificRecipePage = ({ handleFilterAllRecipes, updateAllRecipes, handleFa
           recipe={currentRecipe}
           type="full"
           updateAllRecipes={updateAllRecipes}
+          handleLatestRecipe={handleLatestRecipe}
           handleFilterAllRecipes={handleFilterAllRecipes}
           favoriteRecipes={favoriteRecipes}
           handleFavorites={handleFavorites}

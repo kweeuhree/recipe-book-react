@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 import Recipe from '../../components/Recipe/Recipe';
 
-const RecipesPage = ({ recipes, updateAllRecipes, handleFilterAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe }) => {
+const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilterAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
@@ -34,6 +34,7 @@ const RecipesPage = ({ recipes, updateAllRecipes, handleFilterAllRecipes, handle
               key={recipe?.id} 
               type='preview'
               recipe={recipe}
+              handleLatestRecipe={handleLatestRecipe}
               updateAllRecipes={updateAllRecipes}
               handleFilterAllRecipes={handleFilterAllRecipes}
               favoriteRecipes={favoriteRecipes}
