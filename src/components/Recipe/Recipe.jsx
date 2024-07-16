@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import icons
 import { AiFillLike } from "react-icons/ai";
-import { FaRegWindowClose } from "react-icons/fa";
+import { FaRegWindowClose, FaRegEdit } from "react-icons/fa";
 // import components
 import ImageContainer from '../ImageContainer/ImageContainer';
+import UpdateForm from '../Form/UpdateForm';
 // import styles
 import './RecipeStyle.css';
 
-const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
+const Recipe = ({ updateAllRecipes, handleFilterAllRecipes, recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
+  const [ edit, setEdit ] = useState(false);
   const navigate = useNavigate();
   const isRecipeLiked = favoriteRecipes?.find(favRecipe => favRecipe.id === recipe.id);
   // console.log(isRecipeLiked)
@@ -48,8 +50,12 @@ const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, 
     await fetch(`http://localhost:8000/api/recipes/${recipeId}`, {
       method: 'DELETE'
     })
-    handlSetAllRecipes(recipeId);
+    handleFilterAllRecipes(recipeId);
     navigate('/recipes/');
+  }
+
+  const handleUpdateRecipe = () => {
+    setEdit(true);
   }
 
   const recipeFull = () => {
@@ -57,7 +63,7 @@ const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, 
       <>
         <h2>{recipe?.title}</h2>
         <LikeButton onClick={handleClick}/>
-        <div>{recipe.description}</div>
+        <div>{recipe?.description}</div>
         <div>{recipe.ingredients}</div>
         <div>{recipe.instructions}</div>
         <div>{recipe.servings}</div>
@@ -66,14 +72,18 @@ const Recipe = ({ handlSetAllRecipes, recipe, favoriteRecipes, handleFavorites, 
         <ImageContainer src={recipe.image} alt={recipe.title} />
         <button onClick={handleOpenNotes}>Notes</button>
         <div><span onClick={()=> handleDeleteRecipe(recipe.id)}><FaRegWindowClose /></span></div>
+        <div><span onClick={()=> handleUpdateRecipe()}><FaRegEdit /></span></div>
       </>
     )
   }
 
   return (
+      <>
           <div className='recipe' onClick={()=> handleCurrentRecipe(recipe)}>
             { type === 'full' ? recipeFull() : recipePreview() }
           </div>
+          { edit && <UpdateForm setEdit={setEdit} handleCurrentRecipe={handleCurrentRecipe} recipe={recipe} updateAllRecipes={updateAllRecipes}/>}
+      </>
   )
 }
 

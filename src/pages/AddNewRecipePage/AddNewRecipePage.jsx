@@ -20,6 +20,7 @@ const AddNewRecipePage = ({ updateAllRecipes, handleCurrentRecipe, handleLatestR
 
         updateMessage('New Recipe saved!');
         handleLatestRecipe(newRecipe);
+        console.log(newRecipe)
         updateAllRecipes(newRecipe);
       }
 

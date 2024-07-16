@@ -1,7 +1,7 @@
 import React from 'react';
 import Recipe from '../../components/Recipe/Recipe';
 
-const HomePage = ({ handlSetAllRecipes, latestRecipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, currentRecipe }) => {
+const HomePage = ({ updateAllRecipes, handleFilterAllRecipes, latestRecipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, currentRecipe }) => {
   
 // console.log(latestRecipe, 'latest recipe in homepage')
   return (
@@ -14,7 +14,8 @@ const HomePage = ({ handlSetAllRecipes, latestRecipe, favoriteRecipes, handleFav
               key={'latestRecipe' + latestRecipe.id} 
               recipe={latestRecipe}
               type='preview'
-              handlSetAllRecipes={handlSetAllRecipes}
+              updateAllRecipes={updateAllRecipes}
+              handleFilterAllRecipes={handleFilterAllRecipes}
               favoriteRecipes={favoriteRecipes}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe}
@@ -30,7 +31,8 @@ const HomePage = ({ handlSetAllRecipes, latestRecipe, favoriteRecipes, handleFav
               key={recipe?.id} 
               type='preview'
               recipe={recipe}
-              handlSetAllRecipes={handlSetAllRecipes}
+              updateAllRecipes={updateAllRecipes}
+              handleFilterAllRecipes={handleFilterAllRecipes}
               favoriteRecipes={favoriteRecipes}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe}

@@ -37,9 +37,9 @@ function App() {
   }, [])
 
   //update each time there is a new recipe added
-  useEffect(() => {
-    updateAllRecipes(latestRecipe);
-  }, [latestRecipe]);
+  // useEffect(() => {
+  //   updateAllRecipes(latestRecipe);
+  // }, [latestRecipe]);
 
  // update all recipes
   const updateAllRecipes = (recipe) => {
@@ -87,7 +87,7 @@ function App() {
     setLatestRecipe(recipeObject[0]);
   }
 
-  const handlSetAllRecipes = (recipeId) => {
+  const handleFilterAllRecipes = (recipeId) => {
     setAllRecipes((prevAllRecipes) => (
       prevAllRecipes.filter((r) => (
         r.id !== recipeId
@@ -111,7 +111,8 @@ function App() {
         <Route path="/home/" element={
           <HomePage 
             latestRecipe={latestRecipe} 
-            handlSetAllRecipes={handlSetAllRecipes}
+            updateAllRecipes={updateAllRecipes}
+            handleFilterAllRecipes={handleFilterAllRecipes}
             favoriteRecipes={favoriteRecipes} 
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
@@ -122,7 +123,8 @@ function App() {
         <Route path="/recipes/" element={
           <RecipesPage 
             recipes={allRecipes} 
-            handlSetAllRecipes={handlSetAllRecipes}
+            updateAllRecipes={updateAllRecipes}
+            handleFilterAllRecipes={handleFilterAllRecipes}
             favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
@@ -132,7 +134,8 @@ function App() {
         {/* specific recipe */}
         <Route path={`/recipes/:id/`} element={
           <SpecificRecipePage 
-            handlSetAllRecipes={handlSetAllRecipes}
+            updateAllRecipes={updateAllRecipes}
+            handleFilterAllRecipes={handleFilterAllRecipes}
             favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
@@ -152,7 +155,8 @@ function App() {
         {/* favorite recipes */}
         <Route path="/favorites/" element={
           <RecipesPage 
-            handlSetAllRecipes={handlSetAllRecipes}
+            updateAllRecipes={updateAllRecipes}
+            handleFilterAllRecipes={handleFilterAllRecipes}
             recipes={favoriteRecipes} 
             favoriteRecipes={favoriteRecipes}
             handleFavorites={handleFavorites} 
