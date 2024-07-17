@@ -128,10 +128,7 @@ function App() {
     {/* routes */}
       <Routes>
         {/* navigate to home */}
-        <Route path="/" element={<Navigate to="/home/" />} /> 
-
-        {/* home page */}
-        <Route path="/home/" element={
+        <Route path="/" element={
           <HomePage 
             latestRecipe={latestRecipe} 
             handleLatestRecipe={handleLatestRecipe}
@@ -141,8 +138,8 @@ function App() {
             handleFavorites={handleFavorites} 
             handleCurrentRecipe={handleCurrentRecipe}
             currentRecipe={currentRecipe}/>
-        } />
-
+          } />
+   
         {/* all recipes */}
         <Route path="/recipes/" element={
           <RecipesPage 

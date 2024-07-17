@@ -7,16 +7,16 @@ import './NavBarStyle.css';
 const NavBar = () => {
 
     const links = [
-        ['home'],
-        ['recipes', 'all recipes'],
-        ['favorites', 'favorite recipes'],
-        ['add', 'add new']
+        ['/', 'home'],
+        ['/recipes/', 'all recipes'],
+        ['/favorites/', 'favorite recipes'],
+        ['/add/', 'add new']
     ];
 
     const linksJSX =  links.map((link) => (
         <li key={link[0]}>
             {/* display a proper link name */}
-            <Link to={`/${link[0]}/`}>{link[1] ? link[1] : link[0]}</Link>
+            <Link to={link[0]}>{link[1]}</Link>
         </li>
     ));
 

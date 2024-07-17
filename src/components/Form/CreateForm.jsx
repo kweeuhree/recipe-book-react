@@ -83,14 +83,6 @@ const CreateForm = ({ post }) => {
         placeholder="Number of servings"
     /><br />
 
-    <label htmlFor="image">Image</label><br />
-    <input 
-        type="file" 
-        name="image" 
-        id="image" 
-        onChange={handleChange} 
-    /><br />
-
         <input type="submit" />
         
     </form>
