@@ -198,6 +198,9 @@ function App() {
             handleLatestRecipe={handleLatestRecipe} />
         } />
 
+        {/* catch all route */}
+        <Route path="*" element={<Navigate to="/home/" />} />
+
       </Routes>
 
       {/* footer */}
