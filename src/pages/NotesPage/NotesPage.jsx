@@ -32,21 +32,16 @@ const NotesPage = ({ recipes }) => {
     setNewNote(prev => !prev)
   }
 
-  // update notes array
-  const updateCurrentNotes = (newNote) => {
-    setCurrentNotes((prevCurrentNotes) => ([
-      ...prevCurrentNotes,
-      newNote
-    ]))
-  }
-
   // handle adding a new note
   const postNote = async (data) => {
     try {
       // send a database request to post a new note
         const newNote = await postANote(data, recipeId);
         // update notes array
-        updateCurrentNotes(newNote);
+        setCurrentNotes(prevCurrentNotes => [
+          ...prevCurrentNotes,
+          newNote
+      ])
 
       } catch( error) {
       throw new Error('Failed to create a new Note');
