@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import icons
 import { AiFillLike } from "react-icons/ai";
-import { FaRegWindowClose, FaRegEdit } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 // import components
 import ImageContainer from '../ImageContainer/ImageContainer';
 import UpdateForm from '../Form/UpdateForm';
@@ -25,6 +26,24 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
   const dateCreated = new Date(recipe.date_created).toDateString();
   const dateUpdated = new Date(recipe.date_updated).toDateString();
 
+  // format passed array
+  const formattedJSX = (arr) => {
+    // split by new line
+    const arrJSX = arr.split('\n').map((item) => (
+      // display each line on a new line
+      <div key={item}>{item}</div>
+    ));
+    // return formatted jsx
+    return arrJSX;
+  }
+
+  // format ingredients and instructions
+  const ingredients = recipe.ingredients;
+  const formattedIngredients = formattedJSX(ingredients);
+
+  const instructions = recipe.instructions;
+  const formattedInstructions = formattedJSX(instructions);
+
   // handle updating favorite recipes array
   const handleClick = (event) => {
     // do not open the recipe in a new page
@@ -37,10 +56,17 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
   const LikeButton = ({ onClick }) => {
     return (
       // conditionally apply styling
-      <div onClick={onClick} className={isRecipeLiked ? 'red' : 'white'} >
+      <div onClick={onClick} className={`like-button ${isRecipeLiked ? 'liked' : ''}`} >
         {/* react icon */}
         <AiFillLike />
       </div>)
+  }
+
+  // const display servings
+  const Servings = () => {
+    return ( <div className='servings'>
+      Servings: <span>{recipe?.servings}</span>
+    </div> );
   }
 
   //  open notes in a new page
@@ -81,7 +107,7 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
         <h2>{recipe?.title}</h2>
         <LikeButton onClick={handleClick} />
         <div>{recipe?.description}</div>
-        <div className='servings'>Servings: <span>{recipe?.servings}</span></div>
+        <Servings />
         <ImageContainer src={recipe?.image} alt={recipe?.title} />
       </>
     )
@@ -94,16 +120,16 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
         <h2>{recipe?.title}</h2>
         <LikeButton onClick={handleClick}/>
         <div>{recipe?.description}</div>
-        <div>{recipe.ingredients}</div>
-        <div>{recipe.instructions}</div>
-        <div>{recipe.servings}</div>
+        <div>{formattedIngredients}</div>
+        <div>{formattedInstructions}</div>
+        <Servings />
         <div>{dateCreated}</div>
         <div>{dateUpdated}</div>
         <ImageContainer src={recipe.image} alt={recipe.title} />
 
         {/* button container */}
         <div className='button-container'>
-          <button><span onClick={()=> handleDeleteRecipe(recipe.id)}><FaRegWindowClose /></span></button>
+          <button><span onClick={()=> handleDeleteRecipe(recipe.id)}><MdDeleteForever /></span></button>
           <button onClick={handleOpenNotes}>Notes</button>
           <button><span onClick={()=> handleUpdateRecipe()}><FaRegEdit /></span></button>
         </div>
