@@ -132,7 +132,7 @@ function App() {
     <>
     {/* navigation bar */}
       <NavBar />
-
+<main>
     {/* routes */}
       <Routes>
         {/* navigate to home */}
@@ -201,10 +201,12 @@ function App() {
         } />
 
         {/* catch all route */}
-        <Route path="*" element={<Navigate to="/home/" />} />
+        <Route path="*" element={<Navigate to="/" />} />
 
       </Routes>
 
+      </main>
+      
       {/* footer */}
       <Footer />
 

@@ -1,10 +1,12 @@
 .recipe {
-    border: 1px solid white;
+    border: 1px solid #1a1a1a42;
+    border-radius: 8px;
     margin-block-end: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 /* override default react icon styling */
@@ -13,8 +15,24 @@
     height: 1.5em !important;
 }
 
+.description-container {
+    display: flex;
+    width: 100%;
+    min-height: 5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.description-container > div:first-child {
+    width: 70%;
+}
+
+.description-container > div:last-child {
+    width: 30%;
+}
+
 .like-button {
-    border: 1px solid transparent;
+    border: 1px solid rgba(146, 143, 137, 0.473);
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
@@ -22,15 +40,32 @@
     align-items: center;
     justify-content: center;
     padding: 1%;
+    cursor: pointer;
+    margin: 2%;
 }
 
 .liked {
     border: 1px solid rgba(218, 165, 32, 0.774);
-    background-color: rgba(255, 235, 205, 0.103);
+    background-color: rgba(255, 235, 205, 0.452);
 }
 
-.title-section {
+.border {
+    border: 1px solid #1a1a1a42;
+    border-radius: 8px;
+    width: 90%;
+    margin-block-end: 2%;
+    padding: 2%;
+    justify-content: space-between;
+    cursor:auto;
+}
+
+.servings {
+    font-size: 1.5rem;
+}
+
+.dates-container {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-around;
 }

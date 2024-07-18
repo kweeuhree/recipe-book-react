@@ -64,8 +64,8 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
 
   // const display servings
   const Servings = () => {
-    return ( <div className='servings'>
-      Servings: <span>{recipe?.servings}</span>
+    return ( <div className='border'>
+      <div>Servings:</div><div className='servings'>{recipe?.servings}</div>
     </div> );
   }
 
@@ -118,13 +118,26 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
     return (
       <>
         <h2>{recipe?.title}</h2>
-        <LikeButton onClick={handleClick}/>
-        <div>{recipe?.description}</div>
-        <div>{formattedIngredients}</div>
-        <div>{formattedInstructions}</div>
+        <div className="description-container">
+
+          <div>{recipe?.description}</div>
+          <div>
+            <LikeButton onClick={handleClick}/>
+          </div>
+        </div>
+
+        <div className='dates-container'>
+          <div>Created on:<br/>{dateCreated}</div>
+          <div>Updated on:<br/>{dateUpdated}</div>
+        </div>
+
+
         <Servings />
-        <div>{dateCreated}</div>
-        <div>{dateUpdated}</div>
+
+        <div className='border'>{formattedIngredients}</div>
+        <div className='border'>{formattedInstructions}</div>
+
+
         <ImageContainer src={recipe.image} alt={recipe.title} />
 
         {/* button container */}

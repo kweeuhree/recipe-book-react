@@ -1,5 +1,7 @@
 nav {
     display: flex;
+    width: 25rem;
+    margin-block-end: 2%;
 }
 
 ul {
@@ -8,11 +10,13 @@ ul {
     align-items: center;  
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 ul > li {
-    border: 1px solid white;
-    background-color: rgba(240, 249, 255, 0.05);
+    border: 1px solid #1a1a1a42;
+    border-radius: 8px;
+    background-color: rgba(240, 249, 255, 0.781);
     list-style-type: none;
     align-content: center;
     width: 25%;

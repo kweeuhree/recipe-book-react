@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+// import styles
+import './FormStyles.css';
 
 const CreateForm = ({ post }) => {
     // intialize create form data state

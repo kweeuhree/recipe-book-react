@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // import fetching logic
 import { updateARecipe } from '../../utils/fetchRecipes'
+// import styles
+import './FormStyles.css';
 
 const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit, handleLatestRecipe }) => {
     // intialize update form data state
