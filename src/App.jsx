@@ -16,9 +16,13 @@ import AddNewRecipePage from './pages/AddNewRecipePage/AddNewRecipePage';
 import './App.css'
 
 function App() {
+  // initialize state to store an array of all recipes
   const [ allRecipes, setAllRecipes ] = useState([]);
+  // initialize state to store an array of favorite recipes
   const [ favoriteRecipes, setFavoriteRecipes ] = useState([]);
+  // intiialize state to store current recipe
   const [ currentRecipe, setCurrentRecipe ] = useState(null);
+  // initialize state to store last added recipe
   const [ latestRecipe, setLatestRecipe ] = useState(null);
 
   const navigate = useNavigate();
@@ -27,27 +31,26 @@ function App() {
   useEffect(()=> {
       const fetchAllRecipes = async () => {
         const recipesData = await fetchRecipes();
-        const latestRecipe = recipesData[0]
+        // latest recipe is the first one in the array
+        const latestRecipe = recipesData[0];
+        //update state based on received data
         setAllRecipes(recipesData);
         handleLatestRecipe(latestRecipe);
         updateFavoriteRecipes(recipesData);
       }
       
       fetchAllRecipes();
-  }, [])
-
-  //update each time there is a new recipe added
-  // useEffect(() => {
-  //   updateAllRecipes(latestRecipe);
-  // }, [latestRecipe]);
+  }, []);
 
  // update all recipes
   const updateAllRecipes = (recipe) => {
-    // recipe &&
+    
+    // if recipe id matches an already existing one
     const found = allRecipes.find(r => r.id === recipe.id);
     if(found) {
       setAllRecipes((prevAllRecipes) => {
         return prevAllRecipes.map((r) => {
+          // update recipe with the matching id
           if (r.id === recipe.id) {
             return {
               ...r,
@@ -62,6 +65,7 @@ function App() {
         });
       });
     } else {
+      // if id didnt match, add recipe to array
       setAllRecipes((prevAllRecipes) => ([recipe, ...prevAllRecipes]));
     }
   }
@@ -69,33 +73,39 @@ function App() {
   // handle updating current recipe
   const handleCurrentRecipe = (recipe) => {
     setCurrentRecipe(recipe);
-    navigate(`/recipes/${recipe.id}`);
+    // navigate to page
+    navigate(`/recipes/${recipe.id}/`);
   }
 
-  // handle liked recipes
+  // handle initial state of favorite recipes
   const updateFavoriteRecipes = (recipesData) => {
+    // get array with liked recipes, filter by isLiked
     const likedRecipes = recipesData?.filter((recipe) => (
       recipe.isLiked === true
     ))
+    // set state with new array
     setFavoriteRecipes(likedRecipes);
-    console.log(likedRecipes);
   }
 
 
   // handle adding or removing from favorite recipes
   const handleFavorites = async (recipe) => {
-
+    // check if recipe is in favorite recipes
     const found = favoriteRecipes.find(
       favRecipe => favRecipe.id === recipe.id
     );
 
-
+    // if recipe is liked, remove from favorites
     if(found) {
       setFavoriteRecipes((prev) => 
         (prev.filter((favRecipe) => favRecipe.id !== recipe.id)));
+      // send database request
       await unlikeFavoriteRecipe(recipe.id);
+      // if recipe isnt liked 
     } else {
+      // add to favorite recipes
       setFavoriteRecipes((prev) => ([recipe, ...prev]));
+      // send database request
       await likeARecipe(recipe.id);
     }
 
@@ -103,15 +113,13 @@ function App() {
 
   // update latest recipe
   const handleLatestRecipe = (recipe) => {
-    
-    console.log(latestRecipe, 'current latest recipe');
-    console.log(recipe, 'recipe to update')
     setLatestRecipe(recipe);
-    
   }
 
+  // filter all recipes based on recipeId
   const handleFilterAllRecipes = (recipeId) => {
     setAllRecipes((prevAllRecipes) => (
+      // filter by id
       prevAllRecipes.filter((r) => (
         r.id !== recipeId
       ))
@@ -169,9 +177,6 @@ function App() {
         <Route path={`/notes/:recipeId/`} element={
           <NotesPage 
             recipes={allRecipes}
-            // handleFavorites={handleFavorites} 
-            // handleCurrentRecipe={handleCurrentRecipe}
-            // currentRecipe={currentRecipe}
              />
         } />
 
