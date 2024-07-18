@@ -33,6 +33,21 @@ export const postARecipe = async (recipeData) => {
     }
   }
 
+export const deleteARecipe = async (recipeId) => {
+    try {
+      const response = await fetch(`${baseUrl}/api/recipes/${recipeId}`, {
+      method: 'DELETE'
+    })
+
+    if(response.ok) {
+      return true;
+    } 
+    
+  } catch (error) {
+    throw new Error('Failed to delete a recipe');
+  }
+}
+
 export const unlikeFavoriteRecipe = async (recipeId) => {
     try {
       const response = await fetch(`${baseUrl}/api/recipes/${recipeId}/unlike/`, {
