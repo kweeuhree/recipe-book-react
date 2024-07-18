@@ -61,7 +61,7 @@ const NotesPage = ({ recipes }) => {
   // handle deleting a specific note
   const handleDeleteNote = async (note) => {
     // send a database request to delete a specific note of a recipe
-    const response = await deleteANote(recipeId, note.ic);
+    const response = await deleteANote(recipeId, note.id);
     //  if response is true
     if(response) {
       // filter notes array by note id

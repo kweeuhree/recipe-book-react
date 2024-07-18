@@ -35,7 +35,7 @@ export const postARecipe = async (recipeData) => {
 
 export const deleteARecipe = async (recipeId) => {
     try {
-      const response = await fetch(`${baseUrl}/api/recipes/${recipeId}`, {
+      const response = await fetch(`${baseUrl}/api/recipes/${recipeId}/`, {
       method: 'DELETE'
     })
 
