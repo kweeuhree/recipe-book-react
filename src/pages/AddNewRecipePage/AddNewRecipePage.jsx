@@ -1,32 +1,29 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+// import fetching logic 
+import { postARecipe } from '../../utils/fetchRecipes';
 // import components
 import CreateForm from '../../components/Form/CreateForm';
+
 
 const AddNewRecipePage = ({ updateAllRecipes, handleCurrentRecipe, handleLatestRecipe }) => {
 
   const [ message, setMessage ] = useState('');
   const navigate = useNavigate();
+  
 
-  const postRecipe = async(recipeData) => {
+  const postRecipe = async (recipeData) => {
     try {
-      const response = await fetch('http://3.145.94.65/api/recipes/', {
-        method: 'POST',
-        body: recipeData 
-      })
-
-      if(response.ok) {
-        const newRecipe = await response.json(); 
+        const newRecipe = await postARecipe(recipeData); 
 
         updateMessage('New Recipe saved!');
         handleLatestRecipe(newRecipe);
-        console.log(newRecipe)
         updateAllRecipes(newRecipe);
-      }
 
-      setTimeout(() => {
-        navigate('/recipes/');
-      }, 500);
+        setTimeout(() => {
+          navigate('/recipes/');
+        }, 500);
+  
 
     } catch(error) {
       console.log(error);

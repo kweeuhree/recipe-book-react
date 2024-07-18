@@ -1,11 +1,12 @@
+import { baseUrl } from "./baseUrl";
+
 export const fetchRecipes = async () => {
    try {
-    const response = await fetch('http://3.145.94.65/api/recipes/', {
+    const response = await fetch(`${baseUrl}/api/recipes/`, {
         method: 'GET'
     })
 
     const recipeData = await response.json();
-    
     return recipeData;
 
    } catch(error) {
@@ -15,9 +16,29 @@ export const fetchRecipes = async () => {
    }
 }
 
+export const postARecipe = async (recipeData) => {
+  try {
+    const response = await fetch(`${baseUrl}/api/recipes/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: recipeData 
+    })
+
+    if(response.ok) {
+      const newRecipe = await response.json();
+      return newRecipe;
+    }
+
+    } catch(error) {
+       throw new Error('Failed to post a recipe');
+    }
+  }
+
 export const unlikeFavoriteRecipe = async (recipeId) => {
     try {
-      const response = await fetch(`http://3.145.94.65/api/recipes/${recipeId}/unlike/`, {
+      const response = await fetch(`${baseUrl}/api/recipes/${recipeId}/unlike/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +56,7 @@ export const unlikeFavoriteRecipe = async (recipeId) => {
 
 export const likeARecipe = async (recipeId) => {
     try {
-      const response = await fetch(`http://3.145.94.65/api/recipes/${recipeId}/like/`, {
+      const response = await fetch(`${baseUrl}/api/recipes/${recipeId}/like/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
