@@ -13,8 +13,20 @@
     height: 1.5em !important;
 }
 
-.red {
-    color: red;
+.like-button {
+    border: 1px solid transparent;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.liked {
+    border: 1px solid rgba(218, 165, 32, 0.774);
+    background-color: rgba(255, 235, 205, 0.103);
 }
 
 .title-section {
