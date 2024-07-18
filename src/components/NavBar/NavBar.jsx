@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './NavBarStyle.css';
 
 const NavBar = () => {
-
+    // links data
     const links = [
         ['/', 'home'],
         ['/recipes/', 'all recipes'],
@@ -13,6 +13,7 @@ const NavBar = () => {
         ['/add/', 'add new']
     ];
 
+    // links jsx
     const linksJSX =  links.map((link) => (
         <li key={link[0]}>
             {/* display a proper link name */}
@@ -21,6 +22,7 @@ const NavBar = () => {
     ));
 
   return (
+    // display navigation
     <nav>
         <ul>
             {linksJSX}
