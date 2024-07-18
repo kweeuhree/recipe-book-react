@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+// import navigate object from react router dom
 import { useNavigate } from 'react-router-dom'
+// import fetching logic
+import { updateARecipe } from '../../utils/fetchRecipes'
 
 const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit, handleLatestRecipe }) => {
-    
+    // intialize update form data state
     const [ updateFormData, setUpdateFormData ] = useState({
         id: recipe.id,
         title: recipe.title ,
@@ -15,38 +18,42 @@ const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit, ha
 
     const navigate = useNavigate();
 
-    const handleChange = (event)=> {       
+    // handle form state change
+    const handleChange = (event)=> {   
+         // destructure event object    
         const { name, value } = event.target;
+        // update state
         setUpdateFormData((prevUpdateFormData) => ({
             ...prevUpdateFormData,
             [name]: value
         }))
     }
-
-    const handleSubmit = async(event) => {
+    // handle form submit
+    const handleSubmit = async (event) => {
+        // prevent default behavior
         event.preventDefault();
+         // set form data object with recipe data
         const recipeData = new FormData(event.target);
         try {
-            const response = await fetch(`http://3.145.94.65/api/recipes/${recipe.id}/`, {
-                method: 'PUT',
-                body: recipeData
-            })
-      
-            if(response.ok) {
-                const updatedRecipe = await response.json();
-                handleCurrentRecipe(updatedRecipe);
-                navigate(`/recipes/${updatedRecipe.id}/`);
-                handleLatestRecipe(updatedRecipe);
-                updateAllRecipes(updatedRecipe);
-                setEdit(false);
-                console.log(updatedRecipe, 'updated recipe');              
-            }
+            // send database request
+            const updatedRecipe = await updateARecipe(recipe.id, recipeData);
+            // update recipes states
+            handleCurrentRecipe(updatedRecipe);
+            handleLatestRecipe(updatedRecipe);
+            updateAllRecipes(updatedRecipe);
+            // remove update form
+            setEdit(false);
+            // navigate to specific recipe page
+            navigate(`/recipes/${updatedRecipe.id}/`);
+            console.log(updatedRecipe, 'updated recipe');   
+                           
         } catch(error) {
             throw new Error('Error posting Recipe update');
         }
     }
 
   return (
+    // display form
     <form id="update-recipe" onSubmit={handleSubmit}>
             <label htmlFor="title">Recipe Title</label><br />
     <input 

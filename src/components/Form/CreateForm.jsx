@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const CreateForm = ({ post }) => {
+    // intialize create form data state
     const [ CreateFormData, setCreateFormData ] = useState({
         title: '',
         description: '',
@@ -9,16 +10,22 @@ const CreateForm = ({ post }) => {
         servings: 0,
         image: ''
     })
+
+    // handle form submit
     const handleSubmit = (event) => {
+        // prevent default behavior
         event.preventDefault();
+        // set form data object with recipe data
         const recipeData = new FormData(event.target);
+        // handle posting a new recipe
         post(recipeData);
     }
     
+    // handle form state change
     const handleChange = (event) => {
         // destructure event object
         const { target: {name, value} } = event;
-
+        // update state
         setCreateFormData((prevCreateFormData) => ({
             ...prevCreateFormData,
             [name]: value
@@ -26,6 +33,7 @@ const CreateForm = ({ post }) => {
     }
   
     return (
+        // display form
     <form id="create-recipe" onSubmit={handleSubmit}>
 
     <label htmlFor="title">Recipe Title</label><br />

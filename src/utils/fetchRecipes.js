@@ -48,6 +48,22 @@ export const deleteARecipe = async (recipeId) => {
   }
 }
 
+export const updateARecipe = async(recipeId, recipeData) => {
+  try {
+    const response = await fetch(`${baseUrl}/api/recipes/${recipeId}/`, {
+        method: 'PUT',
+        body: recipeData
+    })
+
+    if(response.ok) {
+        const updatedRecipe = await response.json();
+        return updatedRecipe;          
+    }
+} catch(error) {
+    throw new Error('Error posting Recipe update');
+}
+}
+
 export const unlikeFavoriteRecipe = async (recipeId) => {
     try {
       const response = await fetch(`${baseUrl}/api/recipes/${recipeId}/unlike/`, {
