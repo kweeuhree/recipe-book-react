@@ -20,9 +20,6 @@ export const postARecipe = async (recipeData) => {
   try {
     const response = await fetch(`${baseUrl}/api/recipes/`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: recipeData 
     })
 
