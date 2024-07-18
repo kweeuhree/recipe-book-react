@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.recipe-preview-description {
+    width: 80%;
+}
+
 /* override default react icon styling */
 .recipe svg {
     width: 1.5em !important;

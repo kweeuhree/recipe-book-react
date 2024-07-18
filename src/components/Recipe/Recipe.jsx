@@ -106,7 +106,7 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
       <>
         <h2>{recipe?.title}</h2>
         <LikeButton onClick={handleClick} />
-        <div>{recipe?.description}</div>
+        <div className='recipe-preview-description'>{recipe?.description}</div>
         <Servings />
         <ImageContainer src={recipe?.image} alt={recipe?.title} />
       </>
