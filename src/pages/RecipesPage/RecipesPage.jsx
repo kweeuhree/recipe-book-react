@@ -1,15 +1,19 @@
 import React from 'react'
+// import navigate and location objects form react router dom
 import { useNavigate, useLocation } from 'react-router-dom';
+// import components
 import Recipe from '../../components/Recipe/Recipe';
+// import styles
 import './RecipesPageStyle.css';
 
 const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilterAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe }) => {
+
   const navigate = useNavigate();
   const location = useLocation();
+  // get pathname from location object
   const pathname = location.pathname;
 
-  // console.log(recipes, 'inside recipespage')
-
+  // on click conditionally navigate
   const handleClick = () => {
     return pathname === '/recipes/' ? navigate('/favorites/') : navigate(`/recipes/`); 
   }
@@ -35,6 +39,7 @@ const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilt
             />
           ))
         ) : (
+          // display a message if there are no recipes to display
           <p>No recipes yet</p>
         )}
       </div>
@@ -43,8 +48,8 @@ const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilt
       <div className="bottom-section">
         <h2>recipe book</h2>
 
-        <button 
-          onClick={handleClick}>
+         {/* on click conditionally navigate */}
+        <button onClick={handleClick}>
             {pathname === '/recipes/' ? 'Favorite Recipes' : 'All Recipes'}
         </button>
 
