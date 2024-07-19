@@ -16,9 +16,9 @@ const NotesPage = ({ recipes }) => {
   //  intialize state to trigger appearance of a form
   const [ newNote, setNewNote ] = useState(false);
   //  get recipe id from params
-  const { recipeId } = useParams();
+  const { id } = useParams();
   // find recipe in recipes array
-  const recipe = recipes.find((r) => (r.id === recipeId));
+  const recipe = recipes.find((r) => (r.id === id));
   console.log(recipe);
 
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const NotesPage = ({ recipes }) => {
   const postNote = async (data) => {
     try {
       // send a database request to post a new note
-        const addedNote = await postANote(data, recipeId);
+        const addedNote = await postANote(data, recipe.id);
         // update notes array
         setCurrentNotes(prevCurrentNotes => [
           ...prevCurrentNotes,
@@ -50,13 +50,13 @@ const NotesPage = ({ recipes }) => {
 
   // go back in navigator object
   const handleGoBack = () => {
-    navigate(`/recipes/${recipe.id}`);
+    navigate(-1);
   }
 
   // handle deleting a specific note
   const handleDeleteNote = async (note) => {
     // send a database request to delete a specific note of a recipe
-    const response = await deleteANote(recipeId, note.id);
+    const response = await deleteANote(recipe.id, note.id);
     //  if response is true
     if(response) {
       // filter notes array by note id
