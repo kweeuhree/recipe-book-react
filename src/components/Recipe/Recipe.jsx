@@ -61,7 +61,7 @@ const Recipe = ({ props, recipe, handleLatestRecipe, allRecipes, updateAllRecipe
     // do not open the recipe in a new page
     event.stopPropagation();
     // update state
-    handleFavorites(recipe);
+    handleFavorites(recipe.id);
   } 
 
 // display like button
