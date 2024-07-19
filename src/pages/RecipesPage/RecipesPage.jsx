@@ -6,7 +6,7 @@ import Recipe from '../../components/Recipe/Recipe';
 // import styles
 import './RecipesPageStyle.css';
 
-const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilterAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe }) => {
+const RecipesPage = ({ recipes, allRecipes, updateAllRecipes, handleLatestRecipe, handleFilterAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe }) => {
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,13 +30,14 @@ const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilt
               type='preview'
               recipe={recipe}
               recipes={recipes}
+              allRecipes={allRecipes}
               handleLatestRecipe={handleLatestRecipe}
               updateAllRecipes={updateAllRecipes}
               handleFilterAllRecipes={handleFilterAllRecipes}
               favoriteRecipes={favoriteRecipes}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe} 
-              onClick={()=> handleCurrentRecipe(recipe)}
+              onClick={navigate(`recipes/${recipe.id}`)}
             />
           ))
         ) : (

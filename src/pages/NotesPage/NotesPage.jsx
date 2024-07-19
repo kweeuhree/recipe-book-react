@@ -36,11 +36,11 @@ const NotesPage = ({ recipes }) => {
   const postNote = async (data) => {
     try {
       // send a database request to post a new note
-        const newNote = await postANote(data, recipeId);
+        const addedNote = await postANote(data, recipeId);
         // update notes array
         setCurrentNotes(prevCurrentNotes => [
           ...prevCurrentNotes,
-          newNote
+          addedNote
       ])
 
       } catch( error) {
@@ -50,7 +50,7 @@ const NotesPage = ({ recipes }) => {
 
   // go back in navigator object
   const handleGoBack = () => {
-    navigate(-1);
+    navigate(`/recipes/${recipe.id}`);
   }
 
   // handle deleting a specific note

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import navigate object from react router dom
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 // import icons
 import { AiFillLike } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
@@ -14,22 +14,31 @@ import { deleteARecipe } from '../../utils/fetchRecipes';
 import './RecipeStyle.css';
 
 
-const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, recipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
+const Recipe = ({ props, handleLatestRecipe, allRecipes, updateAllRecipes, handleFilterAllRecipes, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
   // initialize state to trigger update form
   const [ edit, setEdit ] = useState(false);
   const navigate = useNavigate();
+
+  const { id } = useParams();
+  console.log(id, 'id')
+
+  const recipe = allRecipes?.find((r) => r?.id === id);
   // check if current recipe is in favorite recipes
-  const isRecipeLiked = favoriteRecipes?.find(favRecipe => favRecipe.id === recipe.id);
+
+  const isRecipeLiked = favoriteRecipes?.find(favRecipe => favRecipe?.id === recipe?.id);
+
+  console.log(allRecipes, 'inside recipe')
+  console.log(recipe, ' recipe')
 
   // format date strings
-  const dateCreated = new Date(recipe.date_created).toDateString();
-  const dateUpdated = new Date(recipe.date_updated).toDateString();
+  const dateCreated = new Date(recipe?.date_created).toDateString();
+  const dateUpdated = new Date(recipe?.date_updated).toDateString();
 
   // format passed array
   const formattedJSX = (arr) => {
     // split by new line
-    const arrJSX = arr.split('\n').map((item) => (
+    const arrJSX = arr?.split('\n').map((item) => (
       // display each line on a new line
       <div key={item}>{item}</div>
     ));
@@ -38,10 +47,10 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
   }
 
   // format ingredients and instructions
-  const ingredients = recipe.ingredients;
+  const ingredients = recipe?.ingredients;
   const formattedIngredients = formattedJSX(ingredients);
 
-  const instructions = recipe.instructions;
+  const instructions = recipe?.instructions;
   const formattedInstructions = formattedJSX(instructions);
 
   // handle updating favorite recipes array
@@ -138,7 +147,7 @@ const Recipe = ({ handleLatestRecipe, updateAllRecipes, handleFilterAllRecipes, 
         <div className='border'>{formattedInstructions}</div>
 
 
-        <ImageContainer src={recipe.image} alt={recipe.title} />
+        <ImageContainer src={recipe?.image} alt={recipe?.title} />
 
         {/* button container */}
         <div className='button-container'>

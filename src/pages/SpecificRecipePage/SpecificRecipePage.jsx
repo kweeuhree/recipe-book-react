@@ -1,7 +1,7 @@
 import React from 'react'
 import Recipe from '../../components/Recipe/Recipe';
 
-const SpecificRecipePage = ({ handleFilterAllRecipes, updateAllRecipes, handleLatestRecipe, handleFavorites, favoriteRecipes, handleCurrentRecipe, currentRecipe }) => {  
+const SpecificRecipePage = ({ handleFilterAllRecipes, allRecipes, updateAllRecipes, handleLatestRecipe, handleFavorites, favoriteRecipes, handleCurrentRecipe, currentRecipe }) => {  
 
   return (
     <div>
@@ -9,6 +9,7 @@ const SpecificRecipePage = ({ handleFilterAllRecipes, updateAllRecipes, handleLa
           key={currentRecipe?.id} 
           recipe={currentRecipe}
           type="full"
+          allRecipes={allRecipes}
           updateAllRecipes={updateAllRecipes}
           handleLatestRecipe={handleLatestRecipe}
           handleFilterAllRecipes={handleFilterAllRecipes}

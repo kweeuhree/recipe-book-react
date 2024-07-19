@@ -141,6 +141,7 @@ function App() {
         {/* navigate to home */}
         <Route path="/" element={
           <HomePage 
+            allRecipes={allRecipes}
             latestRecipe={latestRecipe} 
             handleLatestRecipe={handleLatestRecipe}
             updateAllRecipes={updateAllRecipes}
@@ -154,6 +155,7 @@ function App() {
         {/* all recipes */}
         <Route path="/recipes/" element={
           <RecipesPage 
+            allRecipes={allRecipes}
             handleLatestRecipe={handleLatestRecipe}
             recipes={allRecipes} 
             updateAllRecipes={updateAllRecipes}
@@ -167,6 +169,7 @@ function App() {
         {/* specific recipe */}
         <Route path={`/recipes/:id/`} element={
           <SpecificRecipePage 
+            allRecipes={allRecipes}
             handleLatestRecipe={handleLatestRecipe}
             updateAllRecipes={updateAllRecipes}
             handleFilterAllRecipes={handleFilterAllRecipes}
@@ -186,6 +189,7 @@ function App() {
         {/* favorite recipes */}
         <Route path="/favorites/" element={
           <RecipesPage 
+            allRecipes={allRecipes}
             handleLatestRecipe={handleLatestRecipe}
             updateAllRecipes={updateAllRecipes}
             handleFilterAllRecipes={handleFilterAllRecipes}
