@@ -1,6 +1,6 @@
 import React from 'react'
 // import navigate and location objects form react router dom
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 // import components
 import Recipe from '../../components/Recipe/Recipe';
 // import styles
@@ -12,6 +12,11 @@ const RecipesPage = ({ recipes, allRecipes, updateAllRecipes, handleLatestRecipe
   const location = useLocation();
   // get pathname from location object
   const pathname = location.pathname;
+
+  // const { id } = useParams();
+  // console.log(id, 'id')
+
+  // const recipe = allRecipes?.find((r) => r?.id === id);
 
   // on click conditionally navigate
   const handleClick = () => {
@@ -37,7 +42,7 @@ const RecipesPage = ({ recipes, allRecipes, updateAllRecipes, handleLatestRecipe
               favoriteRecipes={favoriteRecipes}
               handleFavorites={handleFavorites}
               handleCurrentRecipe={handleCurrentRecipe} 
-              onClick={navigate(`recipes/${recipe.id}`)}
+              onClick={()=> handleCurrentRecipe(recipe)}
             />
           ))
         ) : (

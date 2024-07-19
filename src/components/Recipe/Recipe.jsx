@@ -14,7 +14,7 @@ import { deleteARecipe } from '../../utils/fetchRecipes';
 import './RecipeStyle.css';
 
 
-const Recipe = ({ props, handleLatestRecipe, allRecipes, updateAllRecipes, handleFilterAllRecipes, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
+const Recipe = ({ props, recipe, handleLatestRecipe, allRecipes, updateAllRecipes, handleFilterAllRecipes, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
 
   // initialize state to trigger update form
   const [ edit, setEdit ] = useState(false);
@@ -23,7 +23,10 @@ const Recipe = ({ props, handleLatestRecipe, allRecipes, updateAllRecipes, handl
   const { id } = useParams();
   console.log(id, 'id')
 
-  const recipe = allRecipes?.find((r) => r?.id === id);
+  if(!recipe) {
+    recipe = allRecipes?.find((r) => r?.id === id);
+  }
+   
   // check if current recipe is in favorite recipes
 
   const isRecipeLiked = favoriteRecipes?.find(favRecipe => favRecipe?.id === recipe?.id);

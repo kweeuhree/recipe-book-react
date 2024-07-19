@@ -73,6 +73,7 @@ function App() {
   // handle updating current recipe
   const handleCurrentRecipe = (recipe) => {
     setCurrentRecipe(recipe);
+    console.log(recipe, 'inside handler')
     // navigate to page
     navigate(`/recipes/${recipe.id}/`);
   }
@@ -180,7 +181,7 @@ function App() {
         } />
 
         {/* specific recipe */}
-        <Route path={`/notes/:recipeId/`} element={
+        <Route path={`/notes/:id/`} element={
           <NotesPage 
             recipes={allRecipes}
              />
