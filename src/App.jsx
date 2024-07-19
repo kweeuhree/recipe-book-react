@@ -118,12 +118,15 @@ function App() {
 
   // filter all recipes based on recipeId
   const handleFilterAllRecipes = (recipeId) => {
+
     setAllRecipes((prevAllRecipes) => (
       // filter by id
       prevAllRecipes.filter((r) => (
         r.id !== recipeId
       ))
     ))
+
+    latestRecipe.id === recipeId && setLatestRecipe(allRecipes[1]);
   }
 
 
