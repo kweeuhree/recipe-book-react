@@ -29,6 +29,7 @@ const RecipesPage = ({ recipes, updateAllRecipes, handleLatestRecipe, handleFilt
               key={recipe?.id} 
               type='preview'
               recipe={recipe}
+              recipes={recipes}
               handleLatestRecipe={handleLatestRecipe}
               updateAllRecipes={updateAllRecipes}
               handleFilterAllRecipes={handleFilterAllRecipes}
