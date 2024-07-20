@@ -51,8 +51,8 @@
 <li>Like/Unlike recipes</li>
 <br>
 <div style="text-align:center; border: 1px solid white; width:100%">
-<div>Screen Capture</div>
-<div><img src="./src/assets/recipe-book-gif.gif" alt="Recipe Book demo"/></div>
+<div align="center">Screen Capture</div>
+<div align="center"><img src="./src/assets/recipe-book-gif.gif" alt="Recipe Book demo"/></div>
 </div>
 
 
