@@ -10,7 +10,7 @@
 
 <h3>Tech Stack</h3>
 
-<table style="width:100%; border: 1px solid white; text-align:center">
+<table style="border: 1px solid white; text-align:center" width="800">
 <tr style="width:100%">
     <th style="text-align:center">Frontend</th>
     <th style="text-align:center">Backend</th>
