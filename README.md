@@ -49,6 +49,12 @@
 <li>Mobile-first design</li>
 <li>Create, Read, Update, Delete (CRUD) operations for recipes and notes</li>
 <li>Like/Unlike recipes</li>
+<br>
+<div style="text-align:center; border: 1px solid white; width:100%">
+<div>Screen Capture</div>
+<div><img src="./src/assets/recipe-book-gif.gif" alt="Recipe Book demo"/></div>
+</div>
+
 
 <h3>Future Enhancements</h3>
 <li>User Authentication</li>
