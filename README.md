@@ -10,7 +10,7 @@
 
 <h3>Tech Stack</h3>
 
-<table style="width:100%; border: 1px solid white">
+<table style="width:100%; border: 1px solid white; text-align:center">
 <tr style="width:100%">
     <th style="text-align:center">Frontend</th>
     <th style="text-align:center">Backend</th>
@@ -50,10 +50,10 @@
 <li>Create, Read, Update, Delete (CRUD) operations for recipes and notes</li>
 <li>Like/Unlike recipes</li>
 <br>
-<div style="text-align:center; border: 1px solid white; width:100%">
+
 <div align="center">Screen Capture</div>
 <div align="center"><img src="./src/assets/recipe-book-gif.gif" alt="Recipe Book demo"/></div>
-</div>
+
 
 
 <h3>Future Enhancements</h3>
