@@ -1,6 +1,6 @@
-// import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 // import context provider
-import { RecipeProvider } from './context/RecipeContext';
+import { RecipeProvider, useRecipeContext } from './context/RecipeContext';
 // import route, routes, and navigate component
 import { Route, Routes, Navigate } from 'react-router-dom';
 // import fetching logic
@@ -19,6 +19,7 @@ import './App.css'
 
 function App() {
 
+  const { allRecipes, favoriteRecipes } = useRecipeContext();
   // const navigate = useNavigate();
 
 //   // fetch all recipes
@@ -146,7 +147,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
     
           {/* all recipes */}
-          <Route path="/recipes/" element={<RecipesPage />} />
+          <Route path="/recipes/" element={<RecipesPage recipes={allRecipes} />} />
 
           {/* specific recipe */}
           <Route path={`/recipes/:id/`} element={<SpecificRecipePage />} />
@@ -155,7 +156,7 @@ function App() {
           <Route path={`/notes/:id/`} element={<NotesPage />} />
 
           {/* favorite recipes */}
-          <Route path="/favorites/" element={<RecipesPage />} />
+          <Route path="/favorites/" element={<RecipesPage recipes={favoriteRecipes} />} />
 
           {/* add new recipe */}
           <Route path="/add/" element={<AddNewRecipePage />} />
