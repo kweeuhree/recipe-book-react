@@ -1,8 +1,13 @@
 import React from 'react';
+// import context
+import { useRecipeContext } from '../../context/RecipeContext';
+// import components
 import Recipe from '../../components/Recipe/Recipe';
 
-const HomePage = ({ handleLatestRecipe, allRecipes, updateAllRecipes, handleFilterAllRecipes, latestRecipe, favoriteRecipes, handleFavorites, handleCurrentRecipe, currentRecipe }) => {
-  
+const HomePage = () => {
+  // use recipe context
+  const { latestRecipe, handleCurrentRecipe, favoriteRecipes } = useRecipeContext();
+
 // console.log(latestRecipe, 'latest recipe in homepage')
   return (
     <main>
@@ -14,12 +19,6 @@ const HomePage = ({ handleLatestRecipe, allRecipes, updateAllRecipes, handleFilt
               key={'latestRecipe' + latestRecipe.id} 
               recipe={latestRecipe}
               type='preview'
-              allRecipes={allRecipes}
-              updateAllRecipes={updateAllRecipes}
-              handleFilterAllRecipes={handleFilterAllRecipes}
-              favoriteRecipes={favoriteRecipes}
-              handleFavorites={handleFavorites}
-              handleCurrentRecipe={handleCurrentRecipe}
               onClick={()=> handleCurrentRecipe(latestRecipe)}
              /> }
       </div>
@@ -33,13 +32,6 @@ const HomePage = ({ handleLatestRecipe, allRecipes, updateAllRecipes, handleFilt
               key={recipe?.id} 
               type='preview'
               recipe={recipe}
-              allRecipes={allRecipes}
-              updateAllRecipes={updateAllRecipes}
-              handleLatestRecipe={handleLatestRecipe}
-              handleFilterAllRecipes={handleFilterAllRecipes}
-              favoriteRecipes={favoriteRecipes}
-              handleFavorites={handleFavorites}
-              handleCurrentRecipe={handleCurrentRecipe}
               onClick={()=> handleCurrentRecipe(recipe)}
                />
           )) :
