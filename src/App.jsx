@@ -136,82 +136,34 @@ function App() {
     <>
     {/* navigation bar */}
       <NavBar />
-<main>
-    {/* routes */}
-      <Routes>
-        {/* navigate to home */}
-        <Route path="/" element={
-          <HomePage 
-            allRecipes={allRecipes}
-            latestRecipe={latestRecipe} 
-            handleLatestRecipe={handleLatestRecipe}
-            updateAllRecipes={updateAllRecipes}
-            handleFilterAllRecipes={handleFilterAllRecipes}
-            favoriteRecipes={favoriteRecipes} 
-            handleFavorites={handleFavorites} 
-            handleCurrentRecipe={handleCurrentRecipe}
-            currentRecipe={currentRecipe}/>
-          } />
-   
-        {/* all recipes */}
-        <Route path="/recipes/" element={
-          <RecipesPage 
-            allRecipes={allRecipes}
-            handleLatestRecipe={handleLatestRecipe}
-            recipes={allRecipes} 
-            updateAllRecipes={updateAllRecipes}
-            handleFilterAllRecipes={handleFilterAllRecipes}
-            favoriteRecipes={favoriteRecipes}
-            handleFavorites={handleFavorites} 
-            handleCurrentRecipe={handleCurrentRecipe}
-            currentRecipe={currentRecipe}/>
-        } />
 
-        {/* specific recipe */}
-        <Route path={`/recipes/:id/`} element={
-          <SpecificRecipePage 
-            allRecipes={allRecipes}
-            handleLatestRecipe={handleLatestRecipe}
-            updateAllRecipes={updateAllRecipes}
-            handleFilterAllRecipes={handleFilterAllRecipes}
-            favoriteRecipes={favoriteRecipes}
-            handleFavorites={handleFavorites} 
-            handleCurrentRecipe={handleCurrentRecipe}
-            currentRecipe={currentRecipe} />
-        } />
+    {/* main section */}
+     <main>
 
-        {/* specific recipe */}
-        <Route path={`/notes/:id/`} element={
-          <NotesPage 
-            recipes={allRecipes}
-             />
-        } />
+      {/* routes */}
+        <Routes>
+          {/* navigate to home */}
+          <Route path="/" element={<HomePage />} />
+    
+          {/* all recipes */}
+          <Route path="/recipes/" element={<RecipesPage />} />
 
-        {/* favorite recipes */}
-        <Route path="/favorites/" element={
-          <RecipesPage 
-            allRecipes={allRecipes}
-            handleLatestRecipe={handleLatestRecipe}
-            updateAllRecipes={updateAllRecipes}
-            handleFilterAllRecipes={handleFilterAllRecipes}
-            recipes={favoriteRecipes} 
-            favoriteRecipes={favoriteRecipes}
-            handleFavorites={handleFavorites} 
-            handleCurrentRecipe={handleCurrentRecipe} />
-        } />
+          {/* specific recipe */}
+          <Route path={`/recipes/:id/`} element={<SpecificRecipePage />} />
 
-        {/* add new recipe */}
-        <Route path="/add/" element={
-          <AddNewRecipePage
-            updateAllRecipes={updateAllRecipes}
-            handleCurrentRecipe={handleCurrentRecipe}
-            handleLatestRecipe={handleLatestRecipe} />
-        } />
+          {/* specific recipe */}
+          <Route path={`/notes/:id/`} element={<NotesPage />} />
 
-        {/* catch all route */}
-        <Route path="*" element={<Navigate to="/" />} />
+          {/* favorite recipes */}
+          <Route path="/favorites/" element={<RecipesPage />} />
 
-      </Routes>
+          {/* add new recipe */}
+          <Route path="/add/" element={<AddNewRecipePage />} />
+
+          {/* catch all route */}
+          <Route path="*" element={<Navigate to="/" />} />
+
+        </Routes>
 
       </main>
       
