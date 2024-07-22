@@ -1,10 +1,15 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 // import fetching logic
 import { fetchRecipes, unlikeFavoriteRecipe, likeARecipe } from '../utils/fetchRecipes';
+// import navigate object
+import { useNavigate } from 'react-router-dom';
 
+// create context
 const RecipeContext = createContext();
 
+// define and declare RecipeProvider
 export const RecipeProvider = ({ children }) => {
+  const navigate = useNavigate();
 
  // initialize state to store an array of all recipes
   const [ allRecipes, setAllRecipes ] = useState([]);
