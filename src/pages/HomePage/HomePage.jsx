@@ -8,7 +8,6 @@ const HomePage = () => {
   // use recipe context
   const { latestRecipe, handleCurrentRecipe, favoriteRecipes } = useRecipeContext();
 
-// console.log(latestRecipe, 'latest recipe in homepage')
   return (
     <main>
       {/* latest recipe */}
