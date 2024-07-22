@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // create context
 const RecipeContext = createContext();
 
+
 // define and declare RecipeProvider
 export const RecipeProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -144,7 +145,10 @@ return (
     </RecipeContext.Provider>
 )
 
-
 }
 
-export const useRecipeContext = useContext(RecipeContext);
+export const useRecipeContext = () => {
+  return useContext(RecipeContext);
+}
+
+
