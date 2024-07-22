@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// import context
+import { useRecipeContext } from '../../context/RecipeContext';
 // import navigate object from react router dom
 import { useParams, useNavigate } from 'react-router-dom';
 // import icons
@@ -14,11 +16,14 @@ import { deleteARecipe } from '../../utils/fetchRecipes';
 import './RecipeStyle.css';
 
 
-const Recipe = ({ props, recipe, handleLatestRecipe, allRecipes, updateAllRecipes, handleFilterAllRecipes, favoriteRecipes, handleFavorites, handleCurrentRecipe, type }) => {
+const Recipe = ({ recipe, type }) => {
 
   // initialize state to trigger update form
   const [ edit, setEdit ] = useState(false);
   const navigate = useNavigate();
+
+  // use context
+  const { handleCurrentRecipe, allRecipes, handleFilterAllRecipes, favoriteRecipes, handleFavorites } = useRecipeContext();
 
   const { id } = useParams();
   console.log(id, 'id')
@@ -174,9 +179,6 @@ const Recipe = ({ props, recipe, handleLatestRecipe, allRecipes, updateAllRecipe
           { edit && 
             <UpdateForm
               setEdit={setEdit} 
-              updateAllRecipes={updateAllRecipes} 
-              handleLatestRecipe={handleLatestRecipe} 
-              handleCurrentRecipe={handleCurrentRecipe} 
               recipe={recipe} 
             />}
       </>
