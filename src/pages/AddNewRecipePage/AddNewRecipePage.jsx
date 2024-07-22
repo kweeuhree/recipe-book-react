@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import { postARecipe } from '../../utils/fetchRecipes';
 // import components
 import CreateForm from '../../components/Form/CreateForm';
+// import context
+import { useRecipeContext } from '../../context/RecipeContext';
 
 
-const AddNewRecipePage = ({ updateAllRecipes, handleCurrentRecipe, handleLatestRecipe }) => {
+const AddNewRecipePage = () => {
   // initialize state to store new recipe status message
   const [ message, setMessage ] = useState('');
+  // use context
+  const { handleLatestRecipe, updateAllRecipes } = useRecipeContext();
   const navigate = useNavigate();
   
 // handle posting a new recipe
