@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+// import context
+import { useRecipeContext } from '../../context/RecipeContext';
 // import navigate object from react router dom
 import { useNavigate } from 'react-router-dom'
 // import fetching logic
@@ -6,7 +8,7 @@ import { updateARecipe } from '../../utils/fetchRecipes'
 // import styles
 import './FormStyles.css';
 
-const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit, handleLatestRecipe }) => {
+const UpdateForm = ({ recipe, setEdit }) => {
     // intialize update form data state
     const [ updateFormData, setUpdateFormData ] = useState({
         id: recipe.id,
@@ -17,6 +19,8 @@ const UpdateForm = ({ recipe, updateAllRecipes, handleCurrentRecipe, setEdit, ha
         servings: recipe.servings,
         image: null
     })
+    // use context 
+    const { handleCurrentRecipe, handleLatestRecipe, updateAllRecipes } = useRecipeContext();
 
     const navigate = useNavigate();
 
