@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
-// import context
-import { RecipeContext } from './context/RecipeContext';
+// import { useState, useEffect, useContext } from 'react';
+// import context provider
+import { RecipeProvider } from './context/RecipeContext';
 // import route, routes, and navigate component
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 // import fetching logic
 // import { fetchRecipes, unlikeFavoriteRecipe, likeARecipe } from './utils/fetchRecipes';
 // import components
@@ -133,7 +133,7 @@ function App() {
 
 
   return (
-    <>
+    <RecipeProvider>
     {/* navigation bar */}
       <NavBar />
 
@@ -170,7 +170,7 @@ function App() {
       {/* footer */}
       <Footer />
 
-    </>
+    </RecipeProvider>
   )
 }
 
