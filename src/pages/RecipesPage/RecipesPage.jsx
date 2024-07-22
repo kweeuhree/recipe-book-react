@@ -1,4 +1,5 @@
-import React from 'react'
+// import recipe context
+import { useRecipeContext } from '../../context/RecipeContext';
 // import navigate and location objects form react router dom
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 // import components
@@ -6,8 +7,9 @@ import Recipe from '../../components/Recipe/Recipe';
 // import styles
 import './RecipesPageStyle.css';
 
-const RecipesPage = ({ recipes, allRecipes, updateAllRecipes, handleLatestRecipe, handleFilterAllRecipes, handleFavorites, favoriteRecipes, handleCurrentRecipe }) => {
+const RecipesPage = ({ recipes }) => {
 
+  const { handleCurrentRecipe } = useRecipeContext();
   const navigate = useNavigate();
   const location = useLocation();
   // get pathname from location object
@@ -35,13 +37,6 @@ const RecipesPage = ({ recipes, allRecipes, updateAllRecipes, handleLatestRecipe
               type='preview'
               recipe={recipe}
               recipes={recipes}
-              allRecipes={allRecipes}
-              handleLatestRecipe={handleLatestRecipe}
-              updateAllRecipes={updateAllRecipes}
-              handleFilterAllRecipes={handleFilterAllRecipes}
-              favoriteRecipes={favoriteRecipes}
-              handleFavorites={handleFavorites}
-              handleCurrentRecipe={handleCurrentRecipe} 
               onClick={()=> handleCurrentRecipe(recipe)}
             />
           ))
