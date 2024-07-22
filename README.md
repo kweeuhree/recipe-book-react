@@ -49,6 +49,7 @@
 <li>Mobile-first design</li>
 <li>Create, Read, Update, Delete (CRUD) operations for recipes and notes</li>
 <li>Like/Unlike recipes</li>
+<li>Manage state with useContext for more readable code</li>
 <br>
 
 <div align="center">Screen Capture</div>
@@ -60,7 +61,6 @@
 <li>User Authentication</li>
 <li>Responsive Design</li>
 <li>Refactoring to TypeScript</li>
-<li>Refactoring state management to use useContext and useReducer hooks</li>
 <li>Efficient Content Delivery with AWS CloudFront</li>
 <br>
 <hr>
