@@ -1,7 +1,11 @@
-import React from 'react'
+// import recipe context
+import { useRecipeContext } from '../../context/RecipeContext';
+// import components
 import Recipe from '../../components/Recipe/Recipe';
 
-const SpecificRecipePage = ({ handleFilterAllRecipes, allRecipes, updateAllRecipes, handleLatestRecipe, handleFavorites, favoriteRecipes, handleCurrentRecipe, currentRecipe }) => {  
+const SpecificRecipePage = () => {  
+
+  const { currentRecipe } = useRecipeContext();
 
   return (
     <div>
@@ -9,13 +13,7 @@ const SpecificRecipePage = ({ handleFilterAllRecipes, allRecipes, updateAllRecip
           key={currentRecipe?.id} 
           recipe={currentRecipe}
           type="full"
-          allRecipes={allRecipes}
-          updateAllRecipes={updateAllRecipes}
-          handleLatestRecipe={handleLatestRecipe}
-          handleFilterAllRecipes={handleFilterAllRecipes}
-          favoriteRecipes={favoriteRecipes}
-          handleFavorites={handleFavorites}
-          handleCurrentRecipe={handleCurrentRecipe}      
+
       />
     </div>
   )
