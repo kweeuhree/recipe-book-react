@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext } from 'react';
+// import { useState, useEffect, useContext } from 'react';
 // import context provider
-import { RecipeProvider, useRecipeContext } from './context/RecipeContext';
+import { useRecipeContext } from './context/RecipeContext';
 // import route, routes, and navigate component
 import { Route, Routes, Navigate } from 'react-router-dom';
 // import fetching logic
@@ -134,7 +134,7 @@ function App() {
 
 
   return (
-    <RecipeProvider>
+    <>
     {/* navigation bar */}
       <NavBar />
 
@@ -171,7 +171,7 @@ function App() {
       {/* footer */}
       <Footer />
 
-    </RecipeProvider>
+    </>
   )
 }
 
