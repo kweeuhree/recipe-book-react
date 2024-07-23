@@ -31,7 +31,7 @@ const NotesPage = () => {
 // update current notes each time a recipe changes
   useEffect(() => {
     setCurrentNotes(recipe?.notes);
-  }, [recipe]);
+  }, [recipe?.notes]);
 
   // trigger form appearance
   const handleCreateNote = () => {
@@ -49,6 +49,10 @@ const NotesPage = () => {
           ...prevCurrentNotes,
           addedNote
       ])
+
+      // const updatedArray = [...recipe.notes].push(addedNote);
+      // setCurrentNotes(updatedArray);
+      // console.log(updatedArray);
 
       } catch( error) {
       throw new Error('Failed to create a new Note');
