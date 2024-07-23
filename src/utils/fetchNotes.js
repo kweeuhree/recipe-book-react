@@ -6,7 +6,7 @@ export const postANote = async (noteData, recipeId) => {
           method: 'POST',
           body: noteData
         })
-  
+        
         if(response.ok) {
           const newNote = await response.json();
           return newNote; 

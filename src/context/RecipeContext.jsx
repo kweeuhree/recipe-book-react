@@ -52,7 +52,8 @@ const updateAllRecipes = (recipe) => {
             description: recipe.description || r.description,
             ingredients: recipe.ingredients || r.ingredients,
             instructions: recipe.instructions || r.instructions,
-            servings: recipe.servings || r.servings
+            servings: recipe.servings || r.servings,
+            notes: recipe.notes || r.notes
           };
         }
         return r; // return recipes that weren't updated

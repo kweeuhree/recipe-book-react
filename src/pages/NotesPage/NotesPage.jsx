@@ -5,21 +5,27 @@ import { FaRegWindowClose } from "react-icons/fa";
 import { useParams, useNavigate } from 'react-router-dom';
 // import fetching logic
 import { postANote, deleteANote } from '../../utils/fetchNotes.js';
+// import context
+import { useRecipeContext } from '../../context/RecipeContext.jsx';
 // import components
 import CreateNoteForm from '../../components/Form/CreateNoteForm.jsx';
 // import styles
 import './NotesStyles.css'
 
-const NotesPage = ({ recipes }) => {
+const NotesPage = () => {
   // intialize state that will store current notes
   const [ currentNotes, setCurrentNotes ] = useState([]);
   //  intialize state to trigger appearance of a form
   const [ newNote, setNewNote ] = useState(false);
+
+  // use context
+  const { allRecipes, updateAllRecipes } = useRecipeContext();
+
   //  get recipe id from params
   const { id } = useParams();
   // find recipe in recipes array
-  const recipe = recipes.find((r) => (r.id === id));
-  console.log(recipe);
+  const recipe = allRecipes.find((r) => (r.id === id));
+  console.log(recipe, 'print recipe');
 
   const navigate = useNavigate();
 // update current notes each time a recipe changes
@@ -35,6 +41,7 @@ const NotesPage = ({ recipes }) => {
   // handle adding a new note
   const postNote = async (data) => {
     try {
+      console.log('recipe id', recipe.id);
       // send a database request to post a new note
         const addedNote = await postANote(data, recipe.id);
         // update notes array
@@ -63,6 +70,7 @@ const NotesPage = ({ recipes }) => {
       setCurrentNotes((prevCurrentNotes) => (
         prevCurrentNotes.filter((n) => n.id !== note.id)
       ))
+      // updateAllRecipes(recipe);
     } else {
       throw new Error('Failed deleting a Note');
     }

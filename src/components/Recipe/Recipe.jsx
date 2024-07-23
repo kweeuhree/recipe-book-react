@@ -185,4 +185,4 @@ const Recipe = ({ recipe, type }) => {
   )
 }
 
-export default Recipe;
+export default Recipe; 
