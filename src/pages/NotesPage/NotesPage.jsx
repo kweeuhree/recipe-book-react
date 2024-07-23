@@ -25,7 +25,6 @@ const NotesPage = () => {
   const { id } = useParams();
   // find recipe in recipes array
   const recipe = allRecipes.find((r) => (r.id === id));
-  console.log(recipe, 'print recipe');
 
   const navigate = useNavigate();
 // update current notes each time a recipe changes
@@ -38,21 +37,30 @@ const NotesPage = () => {
     setNewNote(prev => !prev)
   }
 
+  const updateNotesArray = (action, note) => {
+    let updatedNotes;
+
+   try {
+    if(action === 'add') {
+      updatedNotes = [...currentNotes, note];
+    } else {
+      updatedNotes = currentNotes.filter((n) => n.id !== note.id)
+    }
+
+    setCurrentNotes(updatedNotes);
+    updateAllRecipes({ ...recipe, notes: updatedNotes });
+    
+   } catch(error) {
+    throw new Error(error);
+   }
+  }
+
   // handle adding a new note
   const postNote = async (data) => {
     try {
-      console.log('recipe id', recipe.id);
       // send a database request to post a new note
-        const addedNote = await postANote(data, recipe.id);
-        // update notes array
-      //   setCurrentNotes(prevCurrentNotes => [
-      //     ...prevCurrentNotes,
-      //     addedNote
-      // ])
-
-      const updatedNotes = [...currentNotes, addedNote];
-      setCurrentNotes(updatedNotes);
-      updateAllRecipes({ ...recipe, notes: updatedNotes });
+      const addedNote = await postANote(data, recipe.id);
+      updateNotesArray('add', addedNote);
 
       } catch( error) {
       throw new Error('Failed to create a new Note');
@@ -71,9 +79,7 @@ const NotesPage = () => {
     //  if response is true
     if(response) {
       // filter notes array by note id
-      setCurrentNotes((prevCurrentNotes) => (
-        prevCurrentNotes.filter((n) => n.id !== note.id)
-      ))
+      updateNotesArray('filter', note);
       // updateAllRecipes(recipe);
     } else {
       throw new Error('Failed deleting a Note');
