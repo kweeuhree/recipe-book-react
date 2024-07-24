@@ -35,7 +35,7 @@ const CreateNoteForm = ({ post }) => {
     <form id="create-note" onSubmit={handleSubmit}>
 
      
-        <input 
+        <textarea 
             type="text" 
             name="body"
             id="body" 
