@@ -10,6 +10,8 @@ export const postANote = async (noteData, recipeId) => {
         if(response.ok) {
           const newNote = await response.json();
           return newNote; 
+        } else {
+          throw new Error('Failed to POST a new Note');
         }
   
         } catch( error) {
