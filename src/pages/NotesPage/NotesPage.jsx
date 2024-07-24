@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import react icon
-import { FaRegWindowClose } from "react-icons/fa";
 // import params and navigate objects from react router dom
 import { useParams, useNavigate } from 'react-router-dom';
 // import fetching logic
@@ -9,6 +7,7 @@ import { postANote, deleteANote } from '../../utils/fetchNotes.js';
 import { useRecipeContext } from '../../context/RecipeContext.jsx';
 // import components
 import CreateNoteForm from '../../components/Form/CreateNoteForm.jsx';
+import Note from '../../components/Note/Note.jsx';
 // import styles
 import './NotesStyles.css'
 
@@ -94,7 +93,11 @@ const NotesPage = () => {
       {/* display notes if exist */}
       {currentNotes?.length > 0 ? (
           currentNotes.map((note) => (
-            <div key={note.id} className='note'><span>{note.body}</span><span onClick={()=> handleDeleteNote(note)}><FaRegWindowClose /></span></div>
+            <Note 
+              key={note?.id} 
+              note={note} 
+              onClick={()=> handleDeleteNote(note)} 
+            />
           ))
         ) : (
           // display a message if there are no notes to display
