@@ -10,9 +10,10 @@ import { MdDeleteForever } from "react-icons/md";
 // import components
 import ImageContainer from '../ImageContainer/ImageContainer';
 import UpdateForm from '../Form/UpdateForm';
+import FormattedArray from '../FormattedArray';
 // import fetching and formatting logic
 import { deleteARecipe } from '../../utils/fetchRecipes';
-import { formattedDate } from '../../utils/formatDate';
+import { formattedDate } from '../../utils/formatHelpers';
 // import styles
 import './RecipeStyle.css';
 
@@ -44,23 +45,9 @@ const Recipe = ({ recipe, type }) => {
   const dateCreated = formattedDate(recipe?.date_created);
   const dateUpdated = formattedDate(recipe?.date_updated);
 
-  // format passed array
-  const formattedJSX = (arr) => {
-    // split by new line
-    const arrJSX = arr?.split('\n').map((item) => (
-      // display each line on a new line
-      <div key={item}>{item}</div>
-    ));
-    // return formatted jsx
-    return arrJSX;
-  }
-
   // format ingredients and instructions
-  const ingredients = recipe?.ingredients;
-  const formattedIngredients = formattedJSX(ingredients);
-
-  const instructions = recipe?.instructions;
-  const formattedInstructions = formattedJSX(instructions);
+  // const formattedIngredients = formattedJSX(recipe?.ingredients);
+  // const formattedInstructions = formattedJSX(recipe?.instructions);
 
   // handle updating favorite recipes array
   const handleClick = (event) => {
@@ -151,9 +138,10 @@ const Recipe = ({ recipe, type }) => {
 
 
         <Servings />
-
-        <div className='border'>{formattedIngredients}</div>
-        <div className='border'>{formattedInstructions}</div>
+        {/* display ingredients */}
+        <FormattedArray arr={recipe?.ingredients} />
+        {/* display instructions */}
+        <FormattedArray arr={recipe?.instructions} />
 
 
         <ImageContainer src={recipe?.image} alt={recipe?.title} />
