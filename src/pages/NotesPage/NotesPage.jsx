@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 // import fetching logic
 import { postANote, deleteANote } from '../../utils/fetchNotes.js';
+// import hooks
+import useMessage from '../../hooks/useMessage.jsx';
 // import context
 import { useRecipeContext } from '../../context/RecipeContext.jsx';
 // import components
@@ -16,7 +18,8 @@ const NotesPage = () => {
   const [ currentNotes, setCurrentNotes ] = useState([]);
   //  intialize state to trigger appearance of a form
   const [ newNote, setNewNote ] = useState(false);
-
+  // use message hook
+  const [ message, updateMessage ] = useMessage();
   // use context
   const { allRecipes, updateAllRecipes } = useRecipeContext();
 
@@ -62,7 +65,14 @@ const NotesPage = () => {
       updateNotesArray('add', addedNote);
 
       } catch( error) {
+
+      updateMessage('This Note is too long!');
       throw new Error('Failed to create a new Note');
+    } finally {
+      // after a timeout, reset status message regardless of outcome
+      setTimeout(() => {
+        updateMessage('');
+      }, 3000);
     }
   }
 
@@ -108,6 +118,7 @@ const NotesPage = () => {
       <button onClick={handleCreateNote}>
         { newNote ? 'Cancel' : 'Create Note' }
       </button>
+      <span className='alert-message'>{message}</span>
       
         {/* if triggered, show a form */}
       {newNote && <CreateNoteForm post={postNote}/>}
