@@ -1,4 +1,21 @@
 .note {
     display: flex;
     justify-content: space-between;
+    border: 1px solid rgba(255, 235, 205, 0.25);
+    border-radius: 8px;
+    background-color: rgba(255, 235, 205, 0.18);
+    width: 25rem;
+    margin-block-start: 2%;
+    margin-block-end: 2%;
+    padding: 1%;
+}
+
+.right-box > span {
+    margin-inline-end: 2%;
+}
+
+/* target react icon */
+.right-box > span:last-child {
+    font-size: 1.2rem;
+    cursor: pointer;
 }
