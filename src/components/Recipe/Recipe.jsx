@@ -10,8 +10,9 @@ import { MdDeleteForever } from "react-icons/md";
 // import components
 import ImageContainer from '../ImageContainer/ImageContainer';
 import UpdateForm from '../Form/UpdateForm';
-// import fetching logic
+// import fetching and formatting logic
 import { deleteARecipe } from '../../utils/fetchRecipes';
+import { formattedDate } from '../../utils/formatDate';
 // import styles
 import './RecipeStyle.css';
 
@@ -40,8 +41,8 @@ const Recipe = ({ recipe, type }) => {
   console.log(recipe, ' recipe')
 
   // format date strings
-  const dateCreated = new Date(recipe?.date_created).toDateString();
-  const dateUpdated = new Date(recipe?.date_updated).toDateString();
+  const dateCreated = formattedDate(recipe?.date_created);
+  const dateUpdated = formattedDate(recipe?.date_updated);
 
   // format passed array
   const formattedJSX = (arr) => {
