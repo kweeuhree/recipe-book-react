@@ -10,12 +10,24 @@
     padding: 1%;
 }
 
+.right-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .right-box > span {
     margin-inline-end: 2%;
 }
 
 /* target react icon */
 .right-box > span:last-child {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
+}
+
+.alert-message {
+    margin: 2%;
+    color: rgb(177, 49, 18);
 }
