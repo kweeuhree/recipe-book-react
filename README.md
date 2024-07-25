@@ -53,9 +53,20 @@
 <br>
 
 <div align="center">Screen Capture</div>
-<div align="center"><img src="./src/assets/recipe-book-gif.gif" alt="Recipe Book demo"/></div>
-
-
+<div align="center"><img src="./src/assets/readme-images/recipe-book-gif.gif" alt="Recipe Book demo"/></div>
+<br>
+<p>With ContextAPI, the RecipeProvider abstracts most of the heavy lifting logic into a separate module, enabling efficient state management and resulting in cleaner code.</p>
+<div align="center"><img src="./src/assets/readme-images/recipe-context.png" alt="Recipe Context"/></div>
+<br>
+<p>Throughout the application I make use of modular components, such as FormattedArray component that is used to format recipe ingredients and instructions arrays, as well as each note array. RecipesPage.jsx will display an array of favorite or all recipes.</p>
+<div align="center">FormattedArray component</div>
+<div align="center"><img src="./src/assets/readme-images/formatted-array.png" alt="FormattedArray component"/></div>
+<br>
+<p>Abstract helper function into a separate module.</p>
+<div align="center"><img src="./src/assets/readme-images/format-helper.png" alt="Abstracted helper function"/></div>
+<br>
+<p>Conditinal rendering is an indispensable tool, and in this code snippet it allows for displaying a full recipe, or its preview.</p>
+<div align="center"><img src="./src/assets/readme-images/conditional-recipe.png" alt="Conditionally display a preview or a full recipe"/></div>
 
 <h3>Future Enhancements</h3>
 <li>User Authentication</li>
