@@ -5,7 +5,7 @@ import './index.css'
 // import router
 import { BrowserRouter as Router } from 'react-router-dom';
 //import recipe provider
-import { RecipeProvider } from './context/RecipeContext';
+import { RecipeProvider } from './context/RecipeContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
